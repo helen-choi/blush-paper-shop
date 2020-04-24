@@ -9,6 +9,18 @@ export default class ProductList extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(products => {
+        this.setState({ products: products });
+      });
+  }
+
   render() {
     return (
       <ProductListItem />
