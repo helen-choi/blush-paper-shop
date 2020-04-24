@@ -48,8 +48,9 @@ app.get('/api/products/:productId', (req, res, next) => {
     .then(result => {
       if (result.rows[0] === undefined) {
         next(new ClientError(`Product with productId ${productId} cannot be found`, 404));
+      } else {
+        res.json(result.rows[0]);
       }
-      res.json(result.rows[0]);
     })
     .catch(err => next(err));
 });

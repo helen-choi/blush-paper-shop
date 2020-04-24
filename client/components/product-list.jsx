@@ -23,8 +23,20 @@ export default class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="products-container d-flex flex-wrap justify-content-between">
-        <ProductListItem products={this.state.products} />
+      <div className="products-container row flex-wrap justify-content-between">
+        {
+          this.state.products.map(product => {
+            return (
+              <ProductListItem
+                key={product.productId}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+              />
+            );
+          })
+        }
       </div>
     );
   }
