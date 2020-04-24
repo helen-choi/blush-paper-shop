@@ -6,6 +6,7 @@ export default class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -13,7 +14,17 @@ export default class ProductDetails extends React.Component {
       .then(res => res.json());
   }
 
+  handleClick() {
+    this.props.onClick('catalog', {});
+
+  }
+
   render() {
-    return <h1>Details</h1>;
+    return (
+      <div className="details-container">
+        <h1>Details</h1>
+        <button onClick={this.handleClick}>Back to catalog</button>
+      </div>
+    );
   }
 }

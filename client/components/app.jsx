@@ -14,19 +14,25 @@ export default class App extends React.Component {
 
   setView(name, params) {
     this.setState({
-      name: name,
-      params: params
+      view: {
+        name: name,
+        params: params
+      }
     });
   }
 
   render() {
-    // const productList = <ProductList onClick={this.setView} />;
-    // const productDetails = <ProductDetails name={this.state.view.name} params={this.state.view.params}/>;
+    const productList = <ProductList onClick={this.setView} />;
+    const productDetails = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} />;
     return (
       <div className="container">
         <Header />
-        <ProductDetails />
-        <ProductList onClick={this.setView} />
+        {
+          (this.state.view.name !== 'catalog')
+            ? productDetails
+            : productList
+
+        }
       </div>
     );
   }
