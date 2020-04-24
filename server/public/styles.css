@@ -1,0 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+.product-img {
+ object-fit: cover;
+ height: 100px;
+}
