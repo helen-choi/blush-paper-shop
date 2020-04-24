@@ -8,8 +8,8 @@ export default class ProductListItem extends React.Component {
 
   handleClick() {
     const name = this.props.product.name;
-    const description = this.props.product.shortDescription;
-    this.props.onClick(name, description);
+    const productId = this.props.product.productId;
+    this.props.onClick(name, productId);
   }
 
   render() {

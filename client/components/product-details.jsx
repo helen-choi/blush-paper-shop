@@ -10,8 +10,12 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products/2')
-      .then(res => res.json());
+    const params = this.props.params;
+    fetch(`/api/products/${params}`)
+      .then(res => res.json())
+      .then(product => {
+        this.setState({ product: product });
+      });
   }
 
   handleClick() {
@@ -20,11 +24,34 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
-    return (
-      <div className="details-container">
-        <h1>Details</h1>
-        <button onClick={this.handleClick}>Back to catalog</button>
-      </div>
-    );
+    if (this.state.product === null) {
+      return null;
+    }
+    const imageUrl = this.state.product.image;
+    const name = this.state.product.name;
+    const priceNum = ((this.state.product.price) / 100).toFixed(2);
+    const price = `$${priceNum}`;
+    const shortDesc = this.state.product.shortDescription;
+    const longDesc = this.state.product.longDescription;
+    if (this.state.product !== null) {
+      return (
+        <div className="details-container">
+          <button onClick={this.handleClick}>Back to catalog</button>
+          <div className="details-info row">
+            <div className="details-img col-md-5">
+              <img className="card-img-top" src={imageUrl} alt="" />
+            </div>
+            <div className="details-desc col-md-7">
+              <h2 className="card-title">{name}</h2>
+              <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
+              <p className="card-text">{shortDesc}</p>
+            </div>
+          </div>
+          <div className="details-desc col-md-12">
+            <p>{longDesc}</p>
+          </div>
+        </div>
+      );
+    }
   }
 }
