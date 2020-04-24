@@ -8,6 +8,11 @@ export default class ProductDetails extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('/api/products/2')
+      .then(res => res.json());
+  }
+
   render() {
     return <h1>Details</h1>;
   }
