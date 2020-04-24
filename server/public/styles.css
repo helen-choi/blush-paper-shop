@@ -1,11 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-.product {
-  max-width: 31%;
-  margin-bottom: 25px;
-}
 .product-img {
  object-fit: cover;
- height: 100px;
+ height: 200px;
+ margin-top:15px;
 }
