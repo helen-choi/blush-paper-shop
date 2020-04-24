@@ -1,5 +1,5 @@
-.product-img {
- object-fit: cover;
+.product-img, .details-img img {
+ object-fit: contain;
  height: 200px;
  margin-top:15px;
 }

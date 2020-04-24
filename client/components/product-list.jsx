@@ -29,10 +29,8 @@ export default class ProductList extends React.Component {
             return (
               <ProductListItem
                 key={product.productId}
-                image={product.image}
-                name={product.name}
-                price={product.price}
-                description={product.description}
+                product={product}
+                onClick={this.props.onClick}
               />
             );
           })
