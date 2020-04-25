@@ -61,8 +61,79 @@ app.get('/api/cart', (req, res, next) => {
   from "carts";
   `;
   db.query(sql)
-    .then(result => res.json(result.rows));
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
 });
+
+app.post('/api/cart', (req, res, next) => {
+  const productId = req.body.productId;
+
+  if (productId < 0 || productId % 1 !== 0 || productId === undefined) {
+    res.status(400).send('productId you provided is not valid');
+  } else {
+    const getPrice = `
+    select "price"
+    from "products"
+    where "productId" = $1;
+    `;
+    const productValue = [productId];
+
+    db.query(getPrice, productValue)
+      .then(result => {
+        res.json(result);
+        if (result.rows[0] === undefined) {
+          next(new ClientError(`Product with productId ${productId} cannot be found`, 400));
+        } else {
+          const createCart = `
+          insert into "carts" ("cartId", "createdAt")
+          values (default, default)
+          returning "cartId"
+          `;
+          db.query(createCart)
+            .then(result => {
+              return ({
+                cartId: result.rows[0].cartId,
+                productId: productId
+              });
+            });
+        }
+      })
+      .catch(err => next(err));
+  }
+});
+// app.post('/api/cart', (req, res, next) => {
+//   const productId = req.body.productId;
+//   // if (productId < 0 || productId % 1 !== 0 || productId === undefined) {
+//   //   res.status(400).send('cartId you provided is not valid');
+
+//   // } else {
+//   //   const sql = `
+//   //   select "price"
+//   //   from "carts"
+//   //   where "productId" = $1;
+//   //   `;
+//   //   const values = [productId];
+
+//   //   db.query(sql, values)
+//   //     .then(result => {
+//   //       if (result.rows[0] === undefined) {
+//   //         next(new ClientError(`Priec with productId ${productId} cannot be found`, 400));
+//   //         const createCart = `
+//   //         insert into "carts" ("cartId", "createdAt")
+//   //         values (default, default)
+//   //         returning "cartId"
+//   //         `;
+//   //         db.query(createCart)
+//   //           .then(result => {
+//   //             console.log(result);
+//   //           });
+//   //       }
+//       // })
+//       // .catch(err => next(err));
+
+//   }
+
+// });
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
