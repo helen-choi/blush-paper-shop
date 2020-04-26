@@ -80,7 +80,6 @@ app.post('/api/cart', (req, res, next) => {
 
     db.query(getPrice, productValue)
       .then(result => {
-        res.json(result);
         const price = result.rows[0].price;
         if (result.rows[0] === undefined) {
           next(new ClientError(`Product with productId ${productId} cannot be found`, 400));
@@ -107,7 +106,7 @@ app.post('/api/cart', (req, res, next) => {
               `;
               const cartItemValue = [cartId, productId, price];
 
-              db.query(createCartItem, cartItemValue)
+              return db.query(createCartItem, cartItemValue)
                 .then(result => {
                   const cartItemId = result.rows[0].cartItemId;
                   return cartItemId;
@@ -116,10 +115,9 @@ app.post('/api/cart', (req, res, next) => {
                   return result;
                 })
                 .catch(err => next(err));
-              return db.query(createCartItem, cartItemValue);
             })
             .then(result => {
-              const cartItemId = result.rows[0].cartItemId;
+              const cartItemId = result;
               const newCartItem = `
               select "c"."cartItemId",
               "c"."price",
@@ -133,7 +131,12 @@ app.post('/api/cart', (req, res, next) => {
               `;
               const newCartItemValue = [cartItemId];
 
-              db.query(newCartItem, newCartItemValue);
+              return db.query(newCartItem, newCartItemValue)
+                .then(result => {
+                  res.status(201);
+                  res.json(result.rows[0]);
+                })
+                .catch(err => next(err));
             })
             .catch(err => next(err));
         }
