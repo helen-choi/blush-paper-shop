@@ -27,14 +27,15 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
-    // fetch('/api/cart', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(product)
-    // });
-    // console.log(`${product} was added to cart!`);
+    fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ productId: product })
+    })
+      .then(res => res.json())
+      .then(cart => cart);
   }
 
   setView(name, params) {
