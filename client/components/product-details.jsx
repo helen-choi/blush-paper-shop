@@ -7,6 +7,7 @@ export default class ProductDetails extends React.Component {
       product: null
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +22,10 @@ export default class ProductDetails extends React.Component {
   handleClick() {
     this.props.onClick('catalog', {});
 
+  }
+
+  handleAddToCart() {
+    this.props.addToCart('Product');
   }
 
   render() {
@@ -45,7 +50,7 @@ export default class ProductDetails extends React.Component {
               <h2 className="card-title">{name}</h2>
               <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
               <p className="card-text">{shortDesc}</p>
-              <button type="button" className="btn btn-primary">Add to Cart</button>
+              <button type="button" className="btn btn-primary" onClick={this.handleAddToCart}>Add to Cart</button>
             </div>
           </div>
           <div className="details-desc col-md-12">
