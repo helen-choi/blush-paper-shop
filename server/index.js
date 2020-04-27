@@ -84,41 +84,52 @@ app.post('/api/cart', (req, res, next) => {
         if (result.rows[0] === undefined) {
           next(new ClientError(`Product with productId ${productId} cannot be found`, 400));
         } else {
-          const createCart = `
+          if (req.session.cartId) {
+            return ({
+              cartId: req.session.cartId,
+              price: price
+            });
+          } else {
+            const createCart = `
           insert into "carts" ("cartId", "createdAt")
           values (default, default)
           returning "cartId"
           `;
-          db.query(createCart)
-            .then(result => {
-              return ({
-                cartId: result.rows[0].cartId,
-                productId: productId
-              });
-            })
-            .then(result => {
-              const cartId = result.cartId;
-              req.session.cartId = cartId;
-              const createCartItem = `
+            return db.query(createCart)
+              .then(result => {
+                return ({
+                  cartId: result.rows[0].cartId,
+                  price: price
+                });
+              })
+              .catch(err => next(err));
+          }
+        }
+      })
+      .then(result => {
+        const cartId = result.cartId;
+        const price = result.price;
+        req.session.cartId = cartId;
+        const createCartItem = `
               insert into "cartItems" ("cartId", "productId", "price")
               values ($1,$2,$3)
               returning "cartItemId"
               `;
-              const cartItemValue = [cartId, productId, price];
+        const cartItemValue = [cartId, productId, price];
 
-              return db.query(createCartItem, cartItemValue)
-                .then(result => {
-                  const cartItemId = result.rows[0].cartItemId;
-                  return cartItemId;
-                })
-                .then(result => {
-                  return result;
-                })
-                .catch(err => next(err));
-            })
-            .then(result => {
-              const cartItemId = result;
-              const newCartItem = `
+        return db.query(createCartItem, cartItemValue)
+          .then(result => {
+            const cartItemId = result.rows[0].cartItemId;
+            return cartItemId;
+          })
+          .then(result => {
+            return result;
+          })
+          .catch(err => next(err));
+      })
+      .then(result => {
+        const cartItemId = result;
+        const newCartItem = `
               select "c"."cartItemId",
               "c"."price",
               "p"."productId",
@@ -129,17 +140,14 @@ app.post('/api/cart', (req, res, next) => {
               join "products" as "p" using ("productId")
               where "c"."cartItemId" = $1
               `;
-              const newCartItemValue = [cartItemId];
+        const newCartItemValue = [cartItemId];
 
-              return db.query(newCartItem, newCartItemValue)
-                .then(result => {
-                  res.status(201);
-                  res.json(result.rows[0]);
-                })
-                .catch(err => next(err));
-            })
-            .catch(err => next(err));
-        }
+        return db.query(newCartItem, newCartItemValue)
+          .then(result => {
+            res.status(201);
+            res.json(result.rows[0]);
+          })
+          .catch(err => next(err));
       })
       .catch(err => next(err));
   }
