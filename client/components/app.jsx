@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'Shake Weight', params: 1 },
+      view: { name: 'catalog', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);
@@ -16,12 +16,11 @@ export default class App extends React.Component {
 
   getCartItems() {
     fetch('/api/cart')
-      .then(res => {
-        res.json();
-      })
+      .then(res => res.json())
       .then(cart => {
+        const lastItem = (cart.length) - 1;
         this.setState({
-          cart: cart
+          cart: cart[lastItem]
         });
       });
   }
@@ -35,7 +34,11 @@ export default class App extends React.Component {
       body: JSON.stringify({ productId: product })
     })
       .then(res => res.json())
-      .then(cart => cart);
+      .then(cart => {
+        this.setState({
+          cart: cart
+        });
+      });
   }
 
   setView(name, params) {
@@ -56,7 +59,7 @@ export default class App extends React.Component {
     const productDetails = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart}/>;
     return (
       <div className="container">
-        <Header cartItemCount />
+        <Header cartItemCount={this.state.cart.cartItemId} />
         {
           (this.state.view.name !== 'catalog')
             ? productDetails
