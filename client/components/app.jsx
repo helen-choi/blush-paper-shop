@@ -7,9 +7,15 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'catalog', params: {} }
+      view: { name: 'catalog', params: {} },
+      cart: []
     };
     this.setView = this.setView.bind(this);
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(result => result);
   }
 
   setView(name, params) {
@@ -19,6 +25,10 @@ export default class App extends React.Component {
         params: params
       }
     });
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   render() {
