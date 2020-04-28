@@ -57,7 +57,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 
 app.get('/api/cart', (req, res, next) => {
   if (req.session.cartId === undefined) {
-    return [];
+    res.send([]);
   } else {
     const sql = `
     select "c"."cartItemId",
@@ -73,7 +73,10 @@ app.get('/api/cart', (req, res, next) => {
     const values = [req.session.cartId];
 
     db.query(sql, values)
-      .then(result => res.json(result.rows));
+      .then(result => {
+        res.status(200).json(result.rows);
+      })
+      .catch(err => next(err));
   }
 
 });
@@ -95,7 +98,7 @@ app.post('/api/cart', (req, res, next) => {
       .then(result => {
         const price = result.rows[0].price;
         if (result.rows[0] === undefined) {
-          next(new ClientError(`Product with productId ${productId} cannot be found`, 400));
+          throw new ClientError(`Product with productId ${productId} cannot be found`, 400);
         } else {
           if (req.session.cartId) {
             return ({
@@ -114,8 +117,7 @@ app.post('/api/cart', (req, res, next) => {
                   cartId: result.rows[0].cartId,
                   price: price
                 });
-              })
-              .catch(err => next(err));
+              });
           }
         }
       })
@@ -137,8 +139,7 @@ app.post('/api/cart', (req, res, next) => {
           })
           .then(result => {
             return result;
-          })
-          .catch(err => next(err));
+          });
       })
       .then(result => {
         const cartItemId = result;
@@ -159,8 +160,7 @@ app.post('/api/cart', (req, res, next) => {
           .then(result => {
             res.status(201);
             res.json(result.rows[0]);
-          })
-          .catch(err => next(err));
+          });
       })
       .catch(err => next(err));
   }

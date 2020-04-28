@@ -18,9 +18,8 @@ export default class App extends React.Component {
     fetch('/api/cart')
       .then(res => res.json())
       .then(cart => {
-        const lastItem = (cart.length) - 1;
         this.setState({
-          cart: cart[lastItem]
+          cart: cart
         });
       });
   }
@@ -34,7 +33,9 @@ export default class App extends React.Component {
       body: JSON.stringify({ productId: product })
     })
       .then(res => res.json())
-      .then(cart => {
+      .then(newCart => {
+        const cart = this.state.cart.concat();
+        cart.push(newCart);
         this.setState({
           cart: cart
         });
@@ -55,17 +56,17 @@ export default class App extends React.Component {
   }
 
   render() {
-    const productList = <ProductList onClick={this.setView} />;
-    const productDetails = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart}/>;
+    let view;
+    if (this.state.view.name !== 'catalog') {
+      view = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart} />;
+    } else {
+      view = <ProductList onClick={this.setView} />;
+    }
+
     return (
       <div className="container">
-        <Header cartItemCount={this.state.cart.cartItemId} />
-        {
-          (this.state.view.name !== 'catalog')
-            ? productDetails
-            : productList
-
-        }
+        <Header cartItemCount={this.state.cart.length} />
+        {view}
       </div>
     );
   }
