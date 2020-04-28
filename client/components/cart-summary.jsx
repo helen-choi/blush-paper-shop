@@ -4,7 +4,7 @@ import CartSummaryItem from './cart-summary-item';
 export default class CartSummary extends React.Component {
   render() {
     return (
-      <ul>
+      <ul className="list-group">
         {
           this.props.cartItems.map(cartItem => {
             return (

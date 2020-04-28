@@ -1,5 +1,8 @@
-.product-img, .details-img img {
+.product-img, .details-img img{
  object-fit: contain;
  height: 200px;
  margin-top:15px;
+}
+.cart-item-img img {
+  max-width: 100%;
 }
