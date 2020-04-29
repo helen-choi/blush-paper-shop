@@ -24,7 +24,7 @@ export default class CartSummary extends React.Component {
         <button type="button" className="btn btn-dark mb-3" onClick={this.handleClick}>Back to catalog</button>
         <div className="cart-header-container row align-items-center">
           <h1 className="col-md-6">My Cart</h1>
-          <p className="total-price col-md-6 text-right">Total: <span className="text-muted">${totalPrice}</span></p>
+          <p className="total-price col-md-6 text-right">Order total: <span className="text-muted">${totalPrice}</span></p>
         </div>
         <ul className="list-group">
           {

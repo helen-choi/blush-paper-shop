@@ -43,6 +43,16 @@ export default class App extends React.Component {
       });
   }
 
+  placeOrder(orderInfo) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
+    });
+  }
+
   setView(name, params) {
     this.setState({
       view: {
