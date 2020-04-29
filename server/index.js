@@ -172,8 +172,11 @@ app.post('/api/orders', (req, res, next) => {
   const creditCard = req.body.creditCard;
   const shippingAddress = req.body.shippingAddress;
 
-  if (req.session.cartId === undefined) {
-    res.status(400).send('Cannot find cartId');
+  if (cartId === undefined ||
+    name === undefined ||
+    creditCard === undefined ||
+    shippingAddress === undefined) {
+    res.status(400).send('Need more information before query the database');
   } else {
     const sql = `
     insert into "orders" ("cartId","name","creditCard", "shippingAddress")
@@ -185,9 +188,7 @@ app.post('/api/orders', (req, res, next) => {
     db.query(sql, values)
       .then(result => {
         res.status(201).json(result.rows[0]);
-        if (result.rows[0] !== undefined) {
-          delete req.session.cartId;
-        }
+        delete req.session.cartId;
       });
   }
 });
