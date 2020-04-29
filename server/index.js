@@ -184,7 +184,10 @@ app.post('/api/orders', (req, res, next) => {
 
     db.query(sql, values)
       .then(result => {
-        res.status(201).send(result);
+        res.status(201).json(result.rows[0]);
+        if (result.rows[0] !== undefined) {
+          delete req.session.cartId;
+        }
       });
   }
 });
