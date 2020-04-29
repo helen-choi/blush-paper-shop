@@ -166,6 +166,29 @@ app.post('/api/cart', (req, res, next) => {
   }
 });
 
+app.post('/api/orders', (req, res, next) => {
+  const cartId = req.session.cartId;
+  const name = req.body.name;
+  const creditCard = req.body.creditCard;
+  const shippingAddress = req.body.shippingAddress;
+
+  if (req.session.cartId === undefined) {
+    res.status(400).send('Cannot find cartId');
+  } else {
+    const sql = `
+    insert into "orders" ("cartId","name","creditCard", "shippingAddress")
+    values ($1, $2, $3, $4)
+    returning *
+    `;
+    const values = [cartId, name, creditCard, shippingAddress];
+
+    db.query(sql, values)
+      .then(result => {
+        res.status(201).send(result);
+      });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
