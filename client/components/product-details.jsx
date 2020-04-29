@@ -42,7 +42,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.product !== null) {
       return (
         <div className="details-container">
-          <button type="button" className="btn btn-dark" onClick={this.handleClick}>Back to catalog</button>
+          <button type="button" className="btn btn-dark mb-3" onClick={this.handleClick}>Back to catalog</button>
           <div className="details-info row">
             <div className="details-img col-md-5">
               <img className="card-img-top" src={imageUrl} alt="" />
