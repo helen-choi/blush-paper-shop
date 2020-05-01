@@ -11,6 +11,10 @@ export default class CartSummary extends React.Component {
     this.props.onClick('catalog', {});
   }
 
+  handleCheckout() {
+    this.props.onClick('checkout', {});
+  }
+
   render() {
     const cartItems = this.props.cartItems;
     let totalPriceNum = 0;
@@ -37,6 +41,7 @@ export default class CartSummary extends React.Component {
             })
           }
         </ul>
+        <button type="button" className="btn btn-primary text-right" onClick={this.handleCheckout}>Checkout</button>
       </div>
     );
   }
