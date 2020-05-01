@@ -5,6 +5,7 @@ export default class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCheckout = this.handleCheckout.bind(this);
   }
 
   handleClick() {
@@ -22,6 +23,10 @@ export default class CartSummary extends React.Component {
       totalPriceNum += cartItems[i].price;
     }
     const totalPrice = (totalPriceNum / 100).toFixed(2);
+    let btnCheckOut;
+    if (cartItems[0] !== undefined) {
+      btnCheckOut = <button type="button" className="btn btn-primary text-right" onClick={this.handleCheckout}>Checkout</button>;
+    }
 
     return (
       <div className="cart-container">
@@ -41,7 +46,7 @@ export default class CartSummary extends React.Component {
             })
           }
         </ul>
-        <button type="button" className="btn btn-primary text-right" onClick={this.handleCheckout}>Checkout</button>
+        {btnCheckOut}
       </div>
     );
   }

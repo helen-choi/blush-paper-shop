@@ -9,11 +9,12 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'checkout', params: {} },
+      view: { name: 'catalog', params: {} },
       cart: []
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   getCartItems() {
@@ -50,7 +51,11 @@ export default class App extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({})
+      body: JSON.stringify(orderInfo)
+    });
+    this.setState({
+      view: { name: 'catalog', params: {} },
+      cart: []
     });
   }
 
@@ -73,7 +78,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'cart') {
       view = <CartSummary cartItems={this.state.cart} onClick={this.setView}/>;
     } else if (this.state.view.name === 'checkout') {
-      view = <CheckoutForm />;
+      view = <CheckoutForm cartItems={this.state.cart} placeOrder={this.placeOrder} />;
     } else if (this.state.view.name !== 'catalog') {
       view = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart} />;
     } else {
