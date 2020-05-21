@@ -23,7 +23,7 @@ export default class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="products-container row flex-wrap justify-content-between">
+      <div className="container ml-auto mr-auto products-container row flex-wrap justify-content-between">
         {
           this.state.products.map(product => {
             return (
