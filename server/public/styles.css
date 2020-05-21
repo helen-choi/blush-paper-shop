@@ -1,8 +1,16 @@
 *{
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 .header-container {
-  background-color: #FFDBCD;
+  background-color: #F9CEC0;
+}
+.header-container img {
+  width: 60px;
+}
+.header-container h3 {
+  font-family: 'El Messiri', sans-serif;
+  color:white;
 }
 .product-img, .details-img img{
  object-fit: contain;

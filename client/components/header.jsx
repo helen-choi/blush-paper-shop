@@ -12,10 +12,12 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <div className="row header-container d-flex justify-content-between align-items-center">
-        <img src="" alt=""/>
-        <h1>Wicked Sales</h1>
-        <p onClick={this.handleClick}>{this.props.cartItemCount} items <i className="fas fa-shopping-cart"></i></p>
+      <div className="row header-container justify-content-between align-items-center p-2">
+        <div className="container logo d-flex align-items-center">
+          <img src="./images/blushpaper.png" alt="Blush Paper Shop" className="mr-2"/>
+          <h3 className="mb-0">Blush Paper Shop</h3>
+        </div>
+        <p className="text-white" onClick={this.handleClick}>{this.props.cartItemCount} items <i className="fas fa-shopping-cart"></i></p>
       </div>
     );
   }
