@@ -1,2 +1,2 @@
 # blush-paper-shop
-A full stack Node.js and React shopping cart app for wedding stationery.
+A full stack eCommerce app for wedding stationery that mainly uses Node.js and React.
