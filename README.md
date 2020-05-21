@@ -18,3 +18,11 @@ Try the application live at https://blushpaper.helen-choi.com/
 - font-awesome
 - AWS EC2
 - PostgreSQL
+
+## Features
+
+- User can view the products for sale
+- User can view the details of a product
+- User can add a product to their cart
+- User can view their cart summary
+- User can place an order
