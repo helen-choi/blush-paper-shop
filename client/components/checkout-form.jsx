@@ -23,7 +23,9 @@ export default class CheckoutForm extends React.Component {
       creditCard: this.state.creditCard,
       shippingAddress: this.state.address
     };
-    this.props.placeOrder(orderInfo);
+    if (this.state.name && this.state.creditCard && this.state.address) {
+      this.props.placeOrder(orderInfo);
+    }
   }
 
   render() {
@@ -47,7 +49,7 @@ export default class CheckoutForm extends React.Component {
           <label className="mt-3" htmlFor="address">Shipping Address<sup className="text-danger">*</sup></label>
           <textarea className="col-md-12" name="address" id="address" cols="30" rows="10" onChange={this.handleChange}></textarea>
           {!this.state.address && <p className="text-danger">Your shipping address is required</p>}
-          <button type="submit" className="btn btn-primary">Place Order</button>
+          <button type="submit" className="btn btn-primary mb-3">Place Order</button>
         </form>
       </div>
     );
