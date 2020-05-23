@@ -166,9 +166,7 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-  const name = req.body.name;
-  const creditCard = req.body.creditCard;
-  const shippingAddress = req.body.shippingAddress;
+  const { name, creditCard, shippingAddress } = req.body;
 
   if (req.session.cartId === undefined ||
     name === undefined ||
