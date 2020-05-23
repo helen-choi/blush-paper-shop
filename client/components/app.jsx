@@ -52,11 +52,14 @@ export default class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(orderInfo)
-    });
-    this.setState({
-      view: { name: 'catalog', params: {} },
-      cart: []
-    });
+    })
+      .then(() => {
+        this.setState({
+          view: { name: 'catalog', params: {} },
+          cart: []
+        });
+      });
+
   }
 
   setView(name, params) {

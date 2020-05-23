@@ -55,30 +55,29 @@ app.get('/api/products/:productId', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/cart', (req, res, next) => {
-  if (req.session.cartId === undefined) {
-    res.send([]);
-  } else {
-    const sql = `
-    select "c"."cartItemId",
-       "c"."price",
-       "p"."productId",
-       "p"."image",
-       "p"."name",
-       "p"."shortDescription"
+app.get('/api/cart/', (req, res, next) => {
+  const { cartId } = req.session;
+  const sql = `
+      select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
   from "cartItems" as "c"
-  join "products" as "p" using ("productId")
+  join "products" as "p" using("productId")
   where "c"."cartId" = $1
   `;
-    const values = [req.session.cartId];
-
-    db.query(sql, values)
-      .then(result => {
-        res.status(200).json(result.rows);
-      })
-      .catch(err => next(err));
+  const params = [cartId];
+  if (!req.session.cartId) {
+    res.status(200).json([]);
+    return;
   }
-
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
 });
 
 app.post('/api/cart', (req, res, next) => {
@@ -167,12 +166,11 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-  const cartId = req.session.cartId;
   const name = req.body.name;
   const creditCard = req.body.creditCard;
   const shippingAddress = req.body.shippingAddress;
 
-  if (cartId === undefined ||
+  if (req.session.cartId === undefined ||
     name === undefined ||
     creditCard === undefined ||
     shippingAddress === undefined) {
@@ -181,16 +179,25 @@ app.post('/api/orders', (req, res, next) => {
     const sql = `
     insert into "orders" ("cartId","name","creditCard", "shippingAddress")
     values ($1, $2, $3, $4)
-    returning *
+    returning *;
     `;
-    const values = [cartId, name, creditCard, shippingAddress];
-
+    const values = [req.session.cartId, name, creditCard, shippingAddress];
     db.query(sql, values)
       .then(result => {
-        res.status(201).json(result.rows[0]);
-        delete req.session.cartId;
-      });
+        req.session.destroy(err => {
+          if (err) {
+            console.error(err);
+          } else {
+            const order = result.rows[0];
+            res.status(201).json(order);
+          }
+
+        });
+      })
+      .catch(console.error)
+    ;
   }
+
 });
 
 app.use('/api', (req, res, next) => {
