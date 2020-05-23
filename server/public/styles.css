@@ -5,6 +5,9 @@
 #root {
   background:#f4f4f4 url('./images/02-heavy-paper.png') repeat;
 }
+.wrapper {
+  background-color: white;
+}
 .header-container {
   background-color: #F9CEC0;
 }
