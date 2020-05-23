@@ -2,14 +2,17 @@
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
 }
+#root {
+  background:#f4f4f4 url('./images/02-heavy-paper.png') repeat;
+}
 .header-container {
   background-color: #F9CEC0;
 }
 .header-container img {
-  width: 40px;
+  width: 35px;
 }
 .header-container h3 {
-  font-family: 'El Messiri', sans-serif;
+  font-family: 'Cedarville Cursive', cursive;
   color:#343a40;
 }
 .header-container p:hover {
