@@ -53,7 +53,7 @@ export default class CheckoutForm extends React.Component {
           <label className="mt-3" htmlFor="address">Shipping Address<sup className="text-danger">*</sup></label>
           <textarea className="col-md-12" name="address" id="address" cols="30" rows="10" onChange={this.handleChange}></textarea>
           {!this.state.address && this.state.isSubmitted && <p className="text-danger">Your shipping address is required</p>}
-          <button type="submit" className="btn btn-primary mb-3">Place Order</button>
+          <button className="btn btn-primary mb-3">Place Order</button>
         </form>
       </div>
     );
