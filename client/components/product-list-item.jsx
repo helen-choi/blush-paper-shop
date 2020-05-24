@@ -22,8 +22,8 @@ export default class ProductListItem extends React.Component {
       <div onClick={this.handleClick} className="column col-md-4 mb-3">
         <div className="product">
           <img src={image} className="product-img card-img-top" alt="" />
-          <div className="product-info">
-            <p className="product-name">{name}</p>
+          <div className="product-info p-2">
+            <p className="product-name mb-0">{name}</p>
             <p className="product-price mb-2 text-muted">{price}</p>
             {/* <p className="card-text">{description}</p> */}
           </div>
