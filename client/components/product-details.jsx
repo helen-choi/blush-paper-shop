@@ -38,7 +38,6 @@ export default class ProductDetails extends React.Component {
     const priceNum = ((this.state.product.price) / 100).toFixed(2);
     const price = `$${priceNum}`;
     const shortDesc = this.state.product.shortDescription;
-    const longDesc = this.state.product.longDescription;
     if (this.state.product !== null) {
       return (
         <div className="details-container">
@@ -53,9 +52,6 @@ export default class ProductDetails extends React.Component {
               <p className="card-text">{shortDesc}</p>
               <button type="button" className="btn button" onClick={this.handleAddToCart}>Add to Cart</button>
             </div>
-          </div>
-          <div className="details-desc col-md-12">
-            <p>{longDesc}</p>
           </div>
         </div>
       );
