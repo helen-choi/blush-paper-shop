@@ -47,7 +47,7 @@ export default class ProductDetails extends React.Component {
               <img className="card-img-top" src={imageUrl} alt="" />
             </div>
             <div className="details-desc col-md-7">
-              <h2 className="card-title">{name}</h2>
+              <h2 className="details-name">{name}</h2>
               <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
               <p className="card-text">{shortDesc}</p>
               <button type="button" className="btn button" onClick={this.handleAddToCart}>Add to Cart</button>
