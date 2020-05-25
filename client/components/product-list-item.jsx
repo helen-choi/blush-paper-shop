@@ -17,15 +17,15 @@ export default class ProductListItem extends React.Component {
     const name = this.props.product.name;
     const priceNum = (this.props.product.price / 100).toFixed(2);
     const price = `$${priceNum}`;
-    const description = this.props.product.shortDescription;
+    // const description = this.props.product.shortDescription;
     return (
       <div onClick={this.handleClick} className="column col-md-4 mb-3">
-        <div className="product card">
+        <div className="product">
           <img src={image} className="product-img card-img-top" alt="" />
-          <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{price}</h6>
-            <p className="card-text">{description}</p>
+          <div className="product-info p-2">
+            <p className="product-name mb-1">{name}</p>
+            <p className="product-price mb-2 text-muted">{price}</p>
+            {/* <p className="card-text">{description}</p> */}
           </div>
         </div>
       </div>
