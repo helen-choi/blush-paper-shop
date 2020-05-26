@@ -17,7 +17,6 @@ export default class ProductListItem extends React.Component {
     const name = this.props.product.name;
     const priceNum = (this.props.product.price / 100).toFixed(2);
     const price = `$${priceNum}`;
-    // const description = this.props.product.shortDescription;
     return (
       <div onClick={this.handleClick} className="column col-md-4 mb-3">
         <div className="product">
@@ -25,7 +24,6 @@ export default class ProductListItem extends React.Component {
           <div className="product-info p-2">
             <p className="product-name mb-1">{name}</p>
             <p className="product-price mb-2 text-muted">{price}</p>
-            {/* <p className="card-text">{description}</p> */}
           </div>
         </div>
       </div>
