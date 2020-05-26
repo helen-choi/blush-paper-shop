@@ -13,7 +13,7 @@ export default class CartSummaryItem extends React.Component {
           <div className="cart-item-img">
             <img src={image} alt=""/>
           </div>
-          <div className="cart-item-info row pb-4 pt-4 ml-2">
+          <div className="cart-item-info row ml-2">
             <h2 className="mb-2">{name}</h2>
             <h6 className="w-100 text-muted">{price}</h6>
           </div>
