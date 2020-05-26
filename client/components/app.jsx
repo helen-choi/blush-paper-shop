@@ -86,7 +86,7 @@ export default class App extends React.Component {
   render() {
     let view;
     if (this.state.view.name === 'checkout') {
-      view = <CheckoutForm cartItems={this.state.cart} placeOrder={this.placeOrder} />;
+      view = <CheckoutForm cartItems={this.state.cart} onClick={this.setView} placeOrder={this.placeOrder} />;
     } else if (this.state.view.name !== 'catalog') {
       view = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart} />;
     } else {
@@ -97,7 +97,7 @@ export default class App extends React.Component {
       <>
         {(this.state.cartOpen &&
           <div className="cart">
-            <CartSummary cartItems={this.state.cart} onClick={this.setView} />
+            <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
           </div>)}
         <div className="container wrapper pb-4">
           <Header cartItemCount={this.state.cart.length} onCartClick={this.handleCart}/>

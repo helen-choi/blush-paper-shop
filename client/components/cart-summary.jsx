@@ -14,6 +14,7 @@ export default class CartSummary extends React.Component {
 
   handleCheckout() {
     this.props.onClick('checkout', {});
+    this.props.onCartClick();
   }
 
   render() {
