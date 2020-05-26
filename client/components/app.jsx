@@ -89,7 +89,7 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="container wrapper">
+      <div className="container wrapper pb-4">
         <Header cartItemCount={this.state.cart.length} onCartClick={this.setView}/>
         {view}
       </div>
