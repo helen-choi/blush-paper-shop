@@ -80,11 +80,16 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
   font-weight: 700;
 }
 /* Cart */
-.cart-container {
+.cart {
   position: fixed;
   background-color: #f3f3f3;
   z-index: 2;
   height: 100vh;
   width: 300px;
   right: 0;
+  transition: 0.7s ease;
+}
+.cart-hidden {
+  right:-300px;
+  transition: 0.7s ease;
 }

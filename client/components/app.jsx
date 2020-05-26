@@ -98,7 +98,11 @@ export default class App extends React.Component {
         {(this.state.cartOpen &&
           <div className="cart">
             <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
-          </div>)}
+          </div>) ||
+          <div className="cart cart-hidden">
+            <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart} />
+          </div>
+        }
         <div className="container wrapper pb-4">
           <Header cartItemCount={this.state.cart.length} onCartClick={this.handleCart}/>
           {view}
