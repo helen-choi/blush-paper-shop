@@ -30,13 +30,12 @@ export default class CartSummary extends React.Component {
     }
 
     return (
-      <div className="cart-container">
-        <p className="mt-3 mb-3 btn-back text-muted" onClick={this.props.onCartClick}><i className="far fa-times-circle"></i></p>
-        <div className="cart-header-container row align-items-center">
-          <h1 className="col-md-6">My Cart</h1>
-          <p className="total-price col-md-6 text-right">Order total: <span className="text-muted">${totalPrice}</span></p>
+      <div className="cart-container p-3">
+        <p className="mb-3 btn-back text-muted d-flex align-items-center" onClick={this.props.onCartClick}><i className="far fa-times-circle mr-1"></i> <span>Keep Shopping</span></p>
+        <div className="cart-header-container d-flex align-items-center mb-3">
+          <h1>My Cart</h1>
         </div>
-        <ul className="list-group">
+        <ul className="list-group list-unstyled">
           {
             cartItems.map(cartItem => {
               return (
@@ -47,6 +46,7 @@ export default class CartSummary extends React.Component {
             })
           }
         </ul>
+        <p className="total-price mt-3 pt-3 pb-3 text-muted">Order total: ${totalPrice}</p>
         {btnCheckOut}
       </div>
     );

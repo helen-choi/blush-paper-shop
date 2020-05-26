@@ -5,19 +5,17 @@ export default class CartSummaryItem extends React.Component {
     const name = this.props.cartItem.name;
     const priceNum = (this.props.cartItem.price / 100).toFixed(2);
     const price = `$${priceNum}`;
-    const shortDesc = this.props.cartItem.shortDescription;
     const image = this.props.cartItem.image;
 
     return (
-      <li className="cart-item list-group-item mb-3">
-        <div className="cart-item-container row">
-          <div className="cart-item-img col-md-4">
+      <li className="cart-item mb-3">
+        <div className="cart-item-container d-flex align-items-center">
+          <div className="cart-item-img">
             <img src={image} alt=""/>
           </div>
-          <div className="cart-item-info col-md-8 row pb-4 pt-4 ml-2">
-            <h2 className="w-100">{name}</h2>
-            <h6 className="card-subtitle mb-2 w-100 text-muted">{price}</h6>
-            <p className="card-text w-100">{shortDesc}</p>
+          <div className="cart-item-info row pb-4 pt-4 ml-2">
+            <h2 className="mb-2">{name}</h2>
+            <h6 className="w-100 text-muted">{price}</h6>
           </div>
 
         </div>
