@@ -46,7 +46,7 @@ export default class CheckoutForm extends React.Component {
     const totalPrice = (totalPriceNum / 100).toFixed(2);
     return (
       <div className="form">
-        <p className="btn-back text-muted" onClick={this.handleBack}><span>Keep shopping</span></p>
+        <p className="btn-back text-muted mt-3" onClick={this.handleBack}><span>Keep shopping</span></p>
         <h2 className="mt-3">My Cart</h2>
         <p className="mt-3 text-muted">Order Total: <span>{totalPrice}</span></p>
         <form onSubmit={this.handlePlaceOrder}>
