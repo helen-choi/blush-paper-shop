@@ -25,7 +25,7 @@ export default class CartSummary extends React.Component {
     const totalPrice = (totalPriceNum / 100).toFixed(2);
     let btnCheckOut;
     if (cartItems[0] !== undefined) {
-      btnCheckOut = <button type="button" className="btn text-right mb-3" onClick={this.handleCheckout}>Checkout</button>;
+      btnCheckOut = <button type="button" className="btn text-right mb-3 button" onClick={this.handleCheckout}>Checkout</button>;
     }
 
     return (

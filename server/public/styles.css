@@ -12,6 +12,10 @@
 .button {
   background-color:#F9CEC0;
 }
+.button:hover {
+  background-color: black;
+  color:white;
+}
 /* Header */
 .header-container {
   background-color: #F9CEC0;
