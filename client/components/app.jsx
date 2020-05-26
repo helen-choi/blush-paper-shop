@@ -10,11 +10,13 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: { name: 'catalog', params: {} },
-      cart: []
+      cart: [],
+      cartOpen: false
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.handleCart = this.handleCart.bind(this);
   }
 
   getCartItems() {
@@ -71,17 +73,20 @@ export default class App extends React.Component {
     });
   }
 
+  handleCart() {
+    this.setState({
+      cartOpen: !this.state.cartOpen
+    });
+  }
+
   componentDidMount() {
     this.getCartItems();
   }
 
   render() {
     let view;
-
-    if (this.state.view.name === 'cart') {
-      view = <CartSummary cartItems={this.state.cart} onClick={this.setView}/>;
-    } else if (this.state.view.name === 'checkout') {
-      view = <CheckoutForm cartItems={this.state.cart} placeOrder={this.placeOrder} />;
+    if (this.state.view.name === 'checkout') {
+      view = <CheckoutForm cartItems={this.state.cart} onClick={this.setView} placeOrder={this.placeOrder} />;
     } else if (this.state.view.name !== 'catalog') {
       view = <ProductDetails name={this.state.view.name} params={this.state.view.params} onClick={this.setView} addToCart={this.addToCart} />;
     } else {
@@ -89,10 +94,21 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="container wrapper pb-4">
-        <Header cartItemCount={this.state.cart.length} onCartClick={this.setView}/>
-        {view}
-      </div>
+      <>
+        {(this.state.cartOpen &&
+          <div className="cart">
+            <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
+          </div>) ||
+          <div className="cart cart-hidden">
+            <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart} />
+          </div>
+        }
+        <div className="container wrapper pb-4">
+          <Header cartItemCount={this.state.cart.length} onCartClick={this.handleCart}/>
+          {view}
+
+        </div>
+      </>
     );
   }
 }

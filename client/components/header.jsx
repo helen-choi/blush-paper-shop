@@ -7,7 +7,7 @@ export default class Header extends React.Component {
   }
 
   handleClick() {
-    this.props.onCartClick('cart', {});
+    this.props.onCartClick();
   }
 
   render() {
