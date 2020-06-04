@@ -126,7 +126,7 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 }
 /* Modal */
 .disclaminer {
-  background-color:rgba(225,225,225,0.9);
+  background-color:white;
   height: 100vh;
   position: fixed;
   z-index: 2;
@@ -134,4 +134,11 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+.disclaminer p {
+  font-size:18px;
+  font-weight: 300;
+}
+.disclaminer span {
+  font-weight: 700;
 }
