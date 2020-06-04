@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import Disclaimer from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -95,6 +96,7 @@ export default class App extends React.Component {
 
     return (
       <>
+        <Disclaimer/>
         {(this.state.cartOpen &&
           <div className="cart">
             <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
