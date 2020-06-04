@@ -49,17 +49,31 @@ export default class CheckoutForm extends React.Component {
         <p className="mb-3 btn-back text-muted d-flex align-items-center mt-3" onClick={this.handleBack}><i className="far fa-times-circle mr-1"></i> <span>Keep Shopping</span></p>
         <h1 className="mt-3">Checkout</h1>
         <p className="mt-3 text-muted">Order Total: $<span>{totalPrice}</span></p>
-        <form onSubmit={this.handlePlaceOrder}>
-          <label className="mt-3" htmlFor="name" >Name<sup className="text-danger">*</sup></label>
-          <input className="col-md-12" type="name" name="name" id="name" value={this.state.value} onChange={this.handleChange}/>
-          {!this.state.name && this.state.isSubmitted && <p className="text-danger">Your name is required</p>}
-          <label className="mt-3" htmlFor="credit-card">Credit Card<sup className="text-danger">*</sup></label>
-          <input className="col-md-12" type="credit-card" name="creditCard" id="credit-card" value={this.state.value} onChange={this.handleChange}/>
-          {!this.state.creditCard && this.state.isSubmitted && <p className="text-danger">Credit card information is required</p>}
-          <label className="mt-3" htmlFor="address">Shipping Address<sup className="text-danger">*</sup></label>
-          <textarea className="col-md-12" name="address" id="address" cols="30" rows="10" onChange={this.handleChange}></textarea>
-          {!this.state.address && this.state.isSubmitted && <p className="text-danger">Your shipping address is required</p>}
-          <button className="btn button mb-3">Place Order</button>
+        <form onSubmit={this.handlePlaceOrder} className="d-flex justify-content-between flex-wrap">
+          <div className="checkout-section col-12 col-md-6 p-3">
+            <div className="checkout-content p-3">
+              <h5 className="font-weight-bold">Shipping Information</h5>
+              <label className="mt-3" htmlFor="name" >Full Name<sup className="text-danger">*</sup></label>
+              <input className="col-md-12" type="name" name="name" id="name" value={this.state.value} onChange={this.handleChange} />
+              {!this.state.name && this.state.isSubmitted && <p className="text-danger">Your name is required</p>}
+
+              <label className="mt-3" htmlFor="address">Shipping Address<sup className="text-danger">*</sup></label>
+              <textarea className="col-md-12" name="address" id="address" cols="30" rows="10" onChange={this.handleChange}></textarea>
+              {!this.state.address && this.state.isSubmitted && <p className="text-danger">Your shipping address is required</p>}
+            </div>
+          </div>
+          <div className="checkout-section col-12 col-md-6 p-3">
+            <div className="checkout-content p-3">
+              <h5 className="font-weight-bold">Payment Information</h5>
+              <label className="mt-3 w-100" htmlFor="credit-card">Credit Card<sup className="text-danger">*</sup></label>
+              <input className="col-8" type="credit-card" name="creditCard" id="credit-card" value={this.state.value} onChange={this.handleChange} />
+              <img className="col-4" src="./images/creditcards.jpg" alt=""/>
+              {!this.state.creditCard && this.state.isSubmitted && <p className="text-danger">Credit card information is required</p>}
+            </div>
+          </div>
+          <div className="col-12">
+            <button className="btn button mb-3">Place Order</button>
+          </div>
         </form>
       </div>
     );
