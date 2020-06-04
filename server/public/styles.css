@@ -76,18 +76,23 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 }
 /* Cart */
 .cart {
-  position: absolute;
+  position: fixed;
+  height: 100vh;
   background-color: #f3f3f3;
   z-index: 2;
   width: 320px;
   right: 0;
   transition: 0.7s ease;
-  box-shadow: 0 0 7px #333333;
+  box-shadow: 0 0 7px #808080;
 }
 .cart-hidden {
   right:-320px;
   transition: 0.7s ease;
   display: none;
+}
+.cart-container {
+  height: 100%;
+  overflow-y: scroll;
 }
 .cart-container .btn-back i {
   font-size: 20px;
