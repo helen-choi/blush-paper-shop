@@ -1,32 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-export default class Disclaimer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClose = this.handleClose.bind(this);
-  }
+export default function Disclaimer(props) {
 
-  handleClose() {
-    this.props.demoAccepted();
-  }
+  const [show, setShow] = useState(true);
 
-  render() {
-    return (
-      <Modal.Dialog onHide={this.handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
+  const handleClose = () => setShow(false);
 
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="primary" onClick={this.handleClose}>I agree</Button>
-        </Modal.Footer>
-      </Modal.Dialog>
-    );
-  }
+  return (
+    <Modal className="modal" backdrop="static" show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+      </Modal.Header>
+      <Modal.Body>Woohoo, reading this text in a modal!</Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={() => {
+          handleClose();
+          props.demoAccepted();
+        }}>
+                  Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
