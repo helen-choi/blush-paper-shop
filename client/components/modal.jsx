@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 
 export default function Disclaimer(props) {
 
-  const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    props.demoAccepted();
+  };
 
   return (
-    <Modal className="modal" backdrop="static" show={show} onHide={handleClose} centered>
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <Modal.Body>Woohoo, reading this text in a modal!</Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={() => {
-          handleClose();
-          props.demoAccepted();
-        }}>
-                  Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <div className="disclaminer">
+      <p>Please note that this website is for <span>demonstration purposes only</span>.</p>
+      <p>By clicking the following button, I understand that no real purchases will be made and that personal information such as names, addresses, and real credit card numbers should not be used.</p>
+      <button className="button btn" onClick={() => {
+        handleClose();
+        props.demoAccepted();
+      }}>I Agree</button>
+    </div>
   );
 }

@@ -105,7 +105,8 @@ export default class App extends React.Component {
     return (
       <>
         {(!this.state.demoAccepted &&
-          <Disclaimer demoAccepted={this.modalClicked} />)}
+          <Disclaimer demoAccepted={this.modalClicked} />)
+        }
         {(this.state.cartOpen &&
           <div className="cart">
             <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
