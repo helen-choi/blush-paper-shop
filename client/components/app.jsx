@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import Disclaimer from './modal';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,12 +12,14 @@ export default class App extends React.Component {
     this.state = {
       view: { name: 'catalog', params: {} },
       cart: [],
-      cartOpen: false
+      cartOpen: false,
+      demoAccepted: false
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.handleCart = this.handleCart.bind(this);
+    this.modalClicked = this.modalClicked.bind(this);
   }
 
   getCartItems() {
@@ -79,6 +82,12 @@ export default class App extends React.Component {
     });
   }
 
+  modalClicked() {
+    this.setState({
+      demoAccepted: true
+    });
+  }
+
   componentDidMount() {
     this.getCartItems();
   }
@@ -95,6 +104,9 @@ export default class App extends React.Component {
 
     return (
       <>
+        {(!this.state.demoAccepted &&
+          <Disclaimer demoAccepted={this.modalClicked} />)
+        }
         {(this.state.cartOpen &&
           <div className="cart">
             <CartSummary cartItems={this.state.cart} onClick={this.setView} onCartClick={this.handleCart}/>
