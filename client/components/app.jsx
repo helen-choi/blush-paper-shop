@@ -59,6 +59,9 @@ export default class App extends React.Component {
         },
         body: JSON.stringify(orderInfo)
       })
+        .then(res => {
+          res.text();
+        })
         .then(() => {
           this.setState({
             view: { name: 'catalog', params: {} },
