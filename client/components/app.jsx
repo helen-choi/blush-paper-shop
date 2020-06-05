@@ -51,19 +51,21 @@ export default class App extends React.Component {
   }
 
   placeOrder(orderInfo) {
-    fetch('/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(orderInfo)
-    })
-      .then(() => {
-        this.setState({
-          view: { name: 'catalog', params: {} },
-          cart: []
+    if (this.state.demoAccepted) {
+      fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderInfo)
+      })
+        .then(() => {
+          this.setState({
+            view: { name: 'catalog', params: {} },
+            cart: []
+          });
         });
-      });
+    }
 
   }
 
