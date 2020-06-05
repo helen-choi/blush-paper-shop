@@ -10,10 +10,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: { name: 'catalog', params: {} },
+      view: { name: 'checkout', params: {} },
       cart: [],
       cartOpen: false,
-      demoAccepted: false
+      demoAccepted: true
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);

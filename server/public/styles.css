@@ -124,6 +124,25 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 .cart-icon {
   cursor: pointer;
 }
+/* Checkout */
+.checkout-content {
+  background-color: #f8f8f8;
+}
+.checkout-content label {
+  font-size: 13px;
+}
+.checkout-content input, .checkout-content select {
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: white;
+}
+.credit-card img {
+  object-fit: contain;
+}
+.info-disclaimer label {
+  font-size:14px;
+}
 /* Modal */
 .disclaminer {
   background-color:white;
