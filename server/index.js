@@ -182,15 +182,22 @@ app.post('/api/orders', (req, res, next) => {
     const values = [req.session.cartId, name, creditCard, shippingAddress];
     db.query(sql, values)
       .then(result => {
-        req.session.destroy(err => {
-          if (err) {
-            console.error(err);
-          } else {
-            const order = result.rows[0];
+        // req.session.destroy(err => {
+        //   if (err) {
+        //     console.error(err);
+        //   } else {
+        const order = result.rows[0];
+        //     res.status(201).json(order);
+        //   }
+        const query = `
+        delete from "cartItems"
+        where "cartId" = $1;
+        `;
+        const value = [req.session.cartId];
+        db.query(query, value)
+          .then(result => {
             res.status(201).json(order);
-          }
-
-        });
+          });
       })
       .catch(console.error)
     ;
