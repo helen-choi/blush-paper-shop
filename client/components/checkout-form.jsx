@@ -7,11 +7,19 @@ export default class CheckoutForm extends React.Component {
       name: '',
       creditCard: '',
       address: '',
+      city: '',
+      state: '',
+      zip: '',
+      month: '',
+      year: '',
+      cvv: '',
+      disclaimerChecked: false,
       isSubmitted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlePlaceOrder = this.handlePlaceOrder.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleDisclaimer = this.handleDisclaimer.bind(this);
   }
 
   handleChange() {
@@ -20,6 +28,12 @@ export default class CheckoutForm extends React.Component {
 
   handleBack() {
     this.props.onClick('catalog', {});
+  }
+
+  handleDisclaimer() {
+    this.setState({
+      disclaimerChecked: true
+    });
   }
 
   handlePlaceOrder(event) {
@@ -32,7 +46,7 @@ export default class CheckoutForm extends React.Component {
       creditCard: this.state.creditCard,
       shippingAddress: this.state.address
     };
-    if (this.state.name && this.state.creditCard && this.state.address) {
+    if (this.state.name && this.state.creditCard && this.state.address && this.state.disclaimerChecked) {
       this.props.placeOrder(orderInfo);
     }
   }
@@ -44,6 +58,18 @@ export default class CheckoutForm extends React.Component {
       totalPriceNum += cartItems[i].price;
     }
     const totalPrice = (totalPriceNum / 100).toFixed(2);
+    let disclaimerStyle;
+
+    if (this.state.isSubmitted && this.state.disclaimerChecked) {
+      disclaimerStyle = { color: '#212529' };
+    }
+    if (!this.state.isSubmitted && !this.state.disclaimerChecked) {
+      disclaimerStyle = { color: '#212529' };
+    }
+    if (this.state.isSubmitted && !this.state.disclaimerChecked) {
+      disclaimerStyle = { color: '#dc3545' };
+    }
+
     return (
       <div className="form">
         <p className="mb-3 btn-back text-muted d-flex align-items-center mt-3" onClick={this.handleBack}><i className="far fa-times-circle mr-1"></i> <span>Keep Shopping</span></p>
@@ -53,32 +79,32 @@ export default class CheckoutForm extends React.Component {
           <div className="checkout-section col-12 col-md-6 p-3">
             <div className="checkout-content d-flex flex-wrap p-3">
               <h5 className="font-weight-bold">Shipping Information</h5>
-              <div className="form-group w-100">
+              <div className="form-group w-100 mb-0">
                 <label className="mt-3" htmlFor="name" >Full Name<sup className="text-danger">*</sup></label>
-                <input className="w-100 form-control" type="name" name="name" id="name" value={this.state.value} onChange={this.handleChange} />
-                {!this.state.name && this.state.isSubmitted && <small className="text-danger">Your name is required</small>}
+                <input className="w-100 form-control" type="name" name="name" id="name" onChange={this.handleChange} />
+                {!this.state.name && this.state.isSubmitted && <small className="text-danger">Please enter your full name</small>}
               </div>
 
               <div className="form-row">
-                <div className="form-group col-8">
+                <div className="form-group col-8 mb-0">
                   <label className="mt-3 w-100" htmlFor="address">Street Address<sup className="text-danger">*</sup></label>
                   <input className="w-100 form-control" name="address" id="address" onChange={this.handleChange} />
-                  {!this.state.address && this.state.isSubmitted && <p className="text-danger">Your shipping address is required</p>}
                 </div>
-                <div className="form-group col-4">
+                <div className="form-group col-4 mb-0">
                   <label className="mt-3 w-100" htmlFor="apt">Apt/Suite</label>
                   <input className="w-100 form-control" name="apt" id="apt" onChange={this.handleChange} />
                 </div>
+                {!this.state.address && this.state.isSubmitted && <small className="text-danger mb-1 pl-1">Please enter your street address</small>}
               </div>
 
               <div className="form-row">
-                <div className="form-group col-5">
+                <div className="form-group col-5 mb-0">
                   <label className="mt-3 w-100" htmlFor="city">City<sup className="text-danger">*</sup></label>
                   <input className="w-100 form-control" name="city" id="city" onChange={this.handleChange} />
                 </div>
-                <div className="form-group col-3">
+                <div className="form-group col-3 mb-0">
                   <label className="mt-3 w-100" htmlFor="state">State<sup className="text-danger">*</sup></label>
-                  <select className="w-100 form-control" name="state" id="state">
+                  <select className="w-100 form-control" name="state" id="state" onChange={this.handleChange}>
                     <option hidden>--</option>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
@@ -132,11 +158,11 @@ export default class CheckoutForm extends React.Component {
                     <option value="WY">WY</option>
                   </select>
                 </div>
-
-                <div className="form-group col-4">
+                <div className="form-group col-4 mb-0">
                   <label className="mt-3 w-100" htmlFor="zip">Zip Code<sup className="text-danger">*</sup></label>
-                  <input className="w-100 form-control" name="zip" id="zip" onChange={this.handleChange} />
+                  <input className="w-100 form-control" name="zip" id="zip" minLength="5" maxLength="5" onChange={this.handleChange} />
                 </div>
+                {this.state.isSubmitted && (!this.state.city || !this.state.state || !this.state.zip) && <small className="text-danger pl-1">Please enter your city, state, and 5 digit zip code</small>}
               </div>
 
             </div>
@@ -146,15 +172,15 @@ export default class CheckoutForm extends React.Component {
               <h5 className="font-weight-bold">Payment Information</h5>
               <div className="form-row credit-card">
                 <label className="mt-3 w-100" htmlFor="credit-card">Credit Card<sup className="text-danger">*</sup></label>
-                <input className="col-8 form-control" type="credit-card" name="creditCard" id="credit-card" value={this.state.value} onChange={this.handleChange} />
+                <input className="col-8 form-control" type="credit-card" name="creditCard" id="credit-card" minLength="16" maxLength="16" value={this.state.creditCard} onChange={this.handleChange} />
                 <img className="col-4" src="./images/creditcards.jpg" alt="" />
-                {!this.state.creditCard && this.state.isSubmitted && <small className="text-danger">Credit card information is required</small>}
+                {!this.state.creditCard && this.state.isSubmitted && <small className="text-danger">Please enter a 16 digit card number</small>}
               </div>
 
               <div className="form-row">
-                <div className="form-group col-4">
+                <div className="form-group col-4 mb-0 pl-0">
                   <label className="mt-3 w-100" htmlFor="month">Month<sup className="text-danger">*</sup></label>
-                  <select className="w-100 form-control" name="month" id="month">
+                  <select className="w-100 form-control" name="month" id="month" onChange={this.handleChange}>
                     <option hidden>--</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -170,9 +196,9 @@ export default class CheckoutForm extends React.Component {
                     <option value="12">12</option>
                   </select>
                 </div>
-                <div className="form-group col-4">
+                <div className="form-group col-4 mb-0">
                   <label className="mt-3 w-100" htmlFor="year">Year<sup className="text-danger">*</sup></label>
-                  <select className="w-100 form-control" name="year" id="year">
+                  <select className="w-100 form-control" name="year" id="year" onChange={this.handleChange}>
                     <option hidden>--</option>
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
@@ -186,10 +212,11 @@ export default class CheckoutForm extends React.Component {
                     <option value="2029">2029</option>
                   </select>
                 </div>
-                <div className="form-group col-4">
+                <div className="form-group col-4 mb-0">
                   <label className="mt-3 w-100" htmlFor="cvv">CVV<sup className="text-danger">*</sup></label>
-                  <input className="w-100 form-control" name="cvv" id="cvv" onChange={this.handleChange} />
+                  <input className="w-100 form-control" name="cvv" id="cvv" minLength="3" maxLength="3" onChange={this.handleChange} />
                 </div>
+                {this.state.isSubmitted && (!this.state.month || !this.state.year || !this.state.cvv) && <small className="text-danger">Please enter the expiration date and 3 digit cvv</small>}
               </div>
 
             </div>
@@ -197,8 +224,8 @@ export default class CheckoutForm extends React.Component {
           <div className="col-12">
 
             <div className="form-check info-disclaimer mb-3">
-              <input className="form-check-input" type="checkbox" value="" id="info-disclaimer" />
-              <label htmlFor="info-disclaimer">I understand that this website is for demonstration purposes only, that no payment processing will occur, and that personal information such as names, addresses, and real credit card numbers should not be used upon submission of this form.</label>
+              <input className="form-check-input" type="checkbox" value="" id="info-disclaimer" onChange={this.handleDisclaimer}/>
+              <label htmlFor="info-disclaimer" style={disclaimerStyle}>I understand that this website is for demonstration purposes only, that no payment processing will occur, and that personal information such as names, addresses, and real credit card numbers should not be used upon submission of this form.</label>
             </div>
             <button className="btn button mb-3">Place Order</button>
           </div>
