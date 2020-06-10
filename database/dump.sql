@@ -377,6 +377,41 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 397	271	1	2999
 398	272	6	830
 399	273	6	830
+400	274	7	750
+401	275	1	650
+402	276	7	750
+403	277	5	600
+404	278	5	600
+405	278	1	650
+406	279	5	600
+407	279	1	650
+408	280	7	750
+409	280	7	750
+410	280	7	750
+411	280	7	750
+412	280	7	750
+413	280	7	750
+414	281	7	750
+415	281	1	650
+416	281	3	650
+417	281	7	750
+418	281	7	750
+419	281	7	750
+420	282	7	750
+421	282	7	750
+422	282	7	750
+423	282	7	750
+424	282	7	750
+425	282	7	750
+426	282	7	750
+427	283	7	750
+428	284	7	750
+429	285	7	750
+430	286	7	750
+431	287	5	600
+432	288	4	650
+433	289	7	750
+434	290	5	600
 \.
 
 
@@ -442,6 +477,24 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 271	2020-05-23 05:42:21.172828+00
 272	2020-05-23 05:53:44.367717+00
 273	2020-05-23 05:53:56.550797+00
+274	2020-05-24 05:36:54.819378+00
+275	2020-05-24 07:36:40.003151+00
+276	2020-05-25 06:33:16.403887+00
+277	2020-05-25 17:35:36.994867+00
+278	2020-05-26 04:57:11.800406+00
+279	2020-05-26 07:50:02.848096+00
+280	2020-05-26 17:13:25.210376+00
+281	2020-05-26 18:26:00.758707+00
+282	2020-06-04 17:09:27.307985+00
+283	2020-06-04 19:45:14.006306+00
+284	2020-06-04 20:37:33.411173+00
+285	2020-06-05 17:47:38.550699+00
+286	2020-06-05 18:30:19.57833+00
+287	2020-06-05 18:31:43.936679+00
+288	2020-06-05 18:34:14.841598+00
+289	2020-06-05 23:22:16.202391+00
+290	2020-06-05 23:27:31.659505+00
+291	2020-06-05 23:38:14.967885+00
 \.
 
 
@@ -460,147 +513,15 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 8	229	Helen	1234	1234 Hello	2020-04-29 18:14:43.126942+00
 9	229	Helen	1234	1234 Hello	2020-04-29 18:15:39.340919+00
 10	229	Helen	1234	1234 Hello	2020-04-29 18:15:43.897804+00
+166	286	Helen	1234123412341234	asdf	2020-06-05 18:30:36.062288+00
+167	287	Helen	1234123412341234	asdf1234	2020-06-05 18:31:57.314999+00
+168	288	Helen	1234123412341234	1234	2020-06-05 18:34:36.641656+00
+169	289	aasdf	1232342342342342	asdf	2020-06-05 23:22:24.727178+00
+170	290	asdf	1231231231231231	asdf	2020-06-05 23:27:40.843488+00
+171	291	asdf	1231231231231231	asdf	2020-06-05 23:38:24.224115+00
+172	291	asdf	1231231231231231	asdf	2020-06-05 23:39:29.734635+00
 18	231	Jae Choi	1234	7777 Brea Blvd	2020-05-01 07:23:56.531112+00
 19	231				2020-05-01 07:24:05.77581+00
-20	231	Logan Choi	5678	7777 Happy Lane	2020-05-01 07:35:16.931239+00
-21	231	Jae Choi	1234	7777 Hello	2020-05-01 07:35:48.358644+00
-22	231	Helen	123	123	2020-05-01 07:42:16.335835+00
-23	231	Helen Choi	12345678	1234 Hello Lane	2020-05-01 07:43:50.981213+00
-24	234				2020-05-22 05:50:14.170634+00
-25	234				2020-05-22 05:55:34.556281+00
-26	234				2020-05-22 05:55:42.011708+00
-27	234				2020-05-22 05:56:14.073536+00
-28	234	Debbie			2020-05-22 06:02:10.429249+00
-29	234	sdf	sdf	sdf	2020-05-22 06:15:58.122461+00
-30	234	Helen	1234	1234	2020-05-22 06:27:41.592727+00
-31	234	asdf	adsf	asdf	2020-05-22 06:30:51.414471+00
-32	236	Helen	1234	1234	2020-05-22 18:13:38.413034+00
-33	237	gnm	gfhfghj	ghjfghj	2020-05-22 18:19:43.784482+00
-34	237	Helen	1234	1234	2020-05-22 18:23:29.659769+00
-35	237	dsfg	345	sdfgh	2020-05-22 18:24:49.468148+00
-36	237	aesdf	1234	1234	2020-05-22 18:26:36.784872+00
-37	238	Helen	0000	0000	2020-05-22 18:27:32.446587+00
-38	239	hello	1234	1234	2020-05-22 18:29:13.845215+00
-39	239	asdf	adsfasdf	asdf	2020-05-22 18:38:01.581977+00
-40	239	Helen	1234	1234	2020-05-22 18:40:31.952967+00
-41	239	new 	1234	1324	2020-05-22 18:42:37.31469+00
-42	239	Name	1234	1234	2020-05-22 18:48:07.455462+00
-43	239	Helen	0000	0000	2020-05-22 18:49:02.434969+00
-44	239	New order	0000	0000	2020-05-22 18:50:16.665243+00
-45	239	asdf	asdf	asdf	2020-05-22 18:51:42.482182+00
-46	239	asdf	asdf	asdf	2020-05-22 18:53:25.696003+00
-47	239	asdf	asdf	asdf	2020-05-22 18:54:02.377361+00
-48	239	asdf	asdf	asdf	2020-05-22 18:55:22.389953+00
-49	239	asdfasdf	asdf	adsf	2020-05-22 18:55:57.867183+00
-50	239	asdf	adsf	adsf	2020-05-22 18:58:57.401826+00
-51	239	asdf	adsfa	sdf	2020-05-22 18:59:18.595314+00
-52	240	asdf	asdf	1234	2020-05-22 19:03:34.778979+00
-53	240	adsf	asdf	adsf	2020-05-22 19:04:06.223345+00
-54	240	asdf	asdf	adsf	2020-05-22 19:05:01.8824+00
-55	240	asdf	asdf	asdf	2020-05-22 19:06:12.300959+00
-56	240	asd	asdf	asdf	2020-05-22 19:07:40.562835+00
-57	240	asdf	asdf	asdf	2020-05-22 19:08:27.420127+00
-58	240	ASDF	ADSF	ASDF	2020-05-22 19:08:58.640237+00
-59	240	asdf	adsf	asdf	2020-05-22 19:10:59.092784+00
-60	240	asdf	asdf	adsf	2020-05-22 19:19:44.686286+00
-61	240	asdf	asdf	asdf	2020-05-22 19:21:19.396327+00
-62	240	asdf	asdf	adsf	2020-05-22 19:44:39.210506+00
-63	240	asdf	asdf	adsf	2020-05-22 19:51:26.63162+00
-64	241	asdf	asdf	asdf	2020-05-22 19:55:00.184493+00
-65	241	asdf	adsf	adsf	2020-05-22 19:55:48.629752+00
-66	241	asdf	asdf	asdf	2020-05-22 19:56:04.529619+00
-67	241	adsf	adsf	adf	2020-05-22 19:56:26.520045+00
-68	241	asdf	asdf	asdf	2020-05-22 19:57:14.421398+00
-69	242	asdf	asdf	asdf	2020-05-22 19:57:39.741441+00
-70	242	adsf	asdf	adf	2020-05-22 19:57:57.580722+00
-71	242	asdf	adsf	adsf	2020-05-22 19:58:12.223693+00
-72	242	asdf	asdf	adf	2020-05-22 19:58:51.38186+00
-73	243	asdf	adsf	adsf	2020-05-22 19:59:03.852914+00
-74	243	asdf	adsfa	dsf	2020-05-22 19:59:17.871389+00
-75	243	asdf	asdf	adsf	2020-05-22 20:04:32.796928+00
-76	243	asdf	asdf	adf	2020-05-22 20:05:06.18709+00
-77	243	asd	asd	SD	2020-05-22 20:05:35.413368+00
-78	243	asdf	asdf	asdf	2020-05-22 20:06:17.826074+00
-79	243	asdf	adsf	adf	2020-05-22 20:09:11.516912+00
-80	243	adsf	adsf	adsf	2020-05-22 20:09:25.228956+00
-81	243	asdf	adf	adf	2020-05-22 20:15:20.628011+00
-82	243	sadf	asdf	adf	2020-05-22 20:18:19.042166+00
-83	243	asdf	adsf	adf	2020-05-22 20:20:26.61703+00
-84	243	asdf	adsf	adsf	2020-05-22 20:24:38.381398+00
-85	243	adsf	adsf	asdf	2020-05-22 20:28:04.550961+00
-86	244	asdasdf	sdf	sdf	2020-05-22 20:30:09.945657+00
-87	244	sdf	sdf	sdf	2020-05-22 20:32:16.970004+00
-88	244	asdf	sdf	sdf	2020-05-22 20:36:58.669994+00
-89	244	sdf	sdf	sdf	2020-05-22 20:38:00.82973+00
-90	244	sdf	sdf	sdf	2020-05-22 20:39:42.161007+00
-92	244	asdf	asdf	asdf	2020-05-22 21:05:21.41416+00
-93	245	hk	hjk	hjk	2020-05-22 21:08:32.27882+00
-94	245	sdf	sdfs	df	2020-05-22 21:14:56.646127+00
-95	245	sdf	sdf	sdf	2020-05-22 21:17:44.268954+00
-96	245	sdf	sdf	sdf	2020-05-22 21:19:29.57287+00
-97	246	sdf	sdf	sdf	2020-05-22 21:21:30.001976+00
-98	246	asdf	adsf	adsf	2020-05-22 21:37:28.975665+00
-99	246	sdf	sdf	sdf	2020-05-22 21:43:43.91939+00
-100	246	sdf	asdf	asdf	2020-05-22 21:51:35.91978+00
-101	247	asdf	asdf	asdf	2020-05-22 21:53:56.31523+00
-102	247	sdf	sdf	sdf	2020-05-22 21:57:09.474144+00
-103	247	sdf	sdf	sdf	2020-05-22 21:58:01.86167+00
-104	247	adsf	adf	asdf	2020-05-22 21:59:04.69405+00
-105	247	sdf	sdf	sdf	2020-05-22 22:00:01.436974+00
-106	248	sdf	asdf	adf	2020-05-22 22:00:19.259398+00
-107	248	sdf	sdf	sdf	2020-05-22 22:00:28.763052+00
-108	248	sdf	sdf	sdf	2020-05-22 22:00:55.784642+00
-109	249	asdf	asdf	asdf	2020-05-22 22:01:36.288045+00
-110	250	sdf	sdf	sdf	2020-05-22 22:02:17.502629+00
-111	251	asdf	asdf	asdf	2020-05-22 22:03:44.21821+00
-112	252	asdf	adsf	asdf	2020-05-22 22:07:48.200025+00
-113	252	sdf	sdf	sdf	2020-05-22 22:09:27.262641+00
-114	252	sadfs	sdf	sdf	2020-05-22 22:09:44.423632+00
-115	252	sdf	sdf	sdf	2020-05-22 22:09:57.842991+00
-116	252	sdf	sdf	sdf	2020-05-22 22:10:16.172649+00
-117	252	sdf	sdf	sdf	2020-05-22 22:10:37.816584+00
-118	252	sdf	sdf	sdf	2020-05-22 22:11:18.813535+00
-119	252	sdf	sdf	sdf	2020-05-22 22:13:04.662484+00
-120	252	asdf	adf	adsf	2020-05-22 22:14:09.137821+00
-121	252	sdf	sdf	sdf	2020-05-22 22:14:54.326431+00
-122	252	sdf	sdf	sdf	2020-05-22 22:15:51.061836+00
-123	252	adsf	adsf	adfs	2020-05-22 22:16:26.606786+00
-124	252	sdf	sdf	sdf	2020-05-22 22:17:15.981368+00
-125	252	sdf	sdf	sdf	2020-05-22 22:19:57.328654+00
-126	252	1234	1234	1234	2020-05-22 22:23:49.818943+00
-127	253	asdf	adf	adf	2020-05-22 22:27:55.299761+00
-128	254	sdf	sdf	sdf	2020-05-22 22:35:32.546527+00
-129	255	Helen	12341234	1234	2020-05-22 22:36:33.900755+00
-130	255	Helen	1234	1234	2020-05-22 22:37:03.993009+00
-131	255	asfd	asdf	adsf	2020-05-22 22:37:50.249215+00
-132	256	asdf	asdf	adsf	2020-05-22 22:38:36.360002+00
-133	257	HELEN	asdf	asdf	2020-05-22 22:39:21.825525+00
-134	258	adsf	asdf	adsf	2020-05-22 22:43:28.483749+00
-135	258	asdf	adsf	adf	2020-05-22 22:50:01.966372+00
-136	258	asdf	adsf	adsf	2020-05-22 22:55:47.921313+00
-137	258	asdf	asdf	adf	2020-05-22 22:56:31.350645+00
-138	258	adsf	adsf	asdf	2020-05-22 22:58:51.651048+00
-139	259	asdf	adf	adsf	2020-05-22 23:03:37.405022+00
-140	260	asdf	adsf	asdf	2020-05-22 23:05:19.204955+00
-141	260	asdf	asdf	asdf	2020-05-22 23:08:54.648912+00
-142	260	asdf	adf	adf	2020-05-22 23:10:23.004295+00
-143	260	adsf	adsf	adf	2020-05-22 23:10:33.883611+00
-144	261	helen	1234	1234asdf	2020-05-22 23:23:04.941946+00
-145	262	helen	1234	1234asdf	2020-05-22 23:24:42.395005+00
-146	260	sdfgterdf	34534	dsfgsdf	2020-05-22 23:27:59.871962+00
-147	263	sdhgf	456	sdg	2020-05-22 23:34:37.019747+00
-148	264	helen	1234	1234asdf	2020-05-22 23:36:05.17587+00
-149	265	helen	1234	1234asdf	2020-05-22 23:36:56.405484+00
-150	263	fdhgj	456	sdgfh	2020-05-22 23:37:10.562726+00
-151	266	xdgcn	456	xfgn	2020-05-22 23:44:41.237151+00
-152	267	cvb	456	dfgh	2020-05-22 23:46:23.26267+00
-153	267	asdf	asdf	asdf	2020-05-22 23:48:31.209718+00
-154	267	asdf	asdf	asdf	2020-05-22 23:52:51.762375+00
-155	268	Helen	1234	1234	2020-05-23 05:11:17.494915+00
-156	269	Jae	1234	1234	2020-05-23 05:11:48.876773+00
-157	271	Logan	1234	1234	2020-05-23 05:42:42.101104+00
-158	272	asdf	adf	adf	2020-05-23 05:53:50.580338+00
-159	273	asdf	adsf	adsf	2020-05-23 05:54:01.974625+00
 \.
 
 
@@ -609,16 +530,16 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Rosen Wedding Invitation	650	/images/rosen-invitation.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-5	White Flower Menu	600	/images/white-flower-menu.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-7	Greenery Wedding Invitation	750	/images/greenery-invitation.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-9	Greenery Table Numbers	500	/images/greenery-table-number.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-3	White Flower Wedding Invitation	650	/images/white-flower-invitation.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-4	White Flower Program	650	/images/white-flower-program.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-6	White Flower Table Numbers	500	/images/white-flower-table-number.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-8	Greenery Program	700	/images/greenery-program.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-10	Greenery Menu	500	/images/greenery-menu.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
-2	Rosen Menu	600	/images/rosen-menu.jpg	Lorem ipsum dolor sit amet, consectetur adipiscing elit.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+7	Greenery Wedding Invitation	750	/images/greenery-invitation.jpg	Minimalistic wedding invitation with simple greenery that goes well with any wedding color themes.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+3	White Flower Wedding Invitation	650	/images/white-flower-invitation.jpg	Elegant invitation with simple greenery and delicate white flower accented with golden borders.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+9	Greenery Table Numbers	500	/images/greenery-table-number.jpg	Minimalistic table numbers with simple greenery that goes well with any wedding color themes.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+1	Rosen Wedding Invitation	650	/images/rosen-invitation.jpg	Vibrant wedding invitation with beautiful red and white flowers that your guests will love to keep on their refrigerators!	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+5	White Flower Menu	600	/images/white-flower-menu.jpg	Elegant menu with simple greenery and delicate white flower accented with golden borders. (Optional icons are available for menu items)	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+4	White Flower Program	650	/images/white-flower-program.jpg	Elegant wedding program with simple greenery, delicate white flower accented, and golden borders.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+8	Greenery Program	700	/images/greenery-program.jpg	Minimalistic wedding program with simple greenery that goes well with any wedding color themes.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+10	Greenery Menu	500	/images/greenery-menu.jpg	Minimalistic menu with simple greenery that goes well with any wedding color themes.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+6	White Flower Table Numbers	500	/images/white-flower-table-number.jpg	Elegant table numbers with simple greenery, delicate white flower accented, and golden borders.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
+2	Rosen Menu	600	/images/rosen-menu.jpg	Vibrant wedding menu with beautiful red and white flowers. (Optional icons are available for menu items)	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed diam facilisis, vulputate arcu at, laoreet libero. Nunc sed nisi consectetur, feugiat lorem at, semper arcu. Etiam et sem mauris. Fusce a ante rhoncus, luctus leo non, ultrices lorem. Maecenas egestas volutpat lectus at tristique. Morbi vitae pretium sapien. Vestibulum pretium urna eget nibh iaculis, a tincidunt leo tincidunt. Duis ac vestibulum enim, at pulvinar tortor.
 \.
 
 
@@ -626,21 +547,21 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 399, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 436, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 273, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 291, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 159, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 172, true);
 
 
 --
