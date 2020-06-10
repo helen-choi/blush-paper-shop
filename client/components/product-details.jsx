@@ -38,6 +38,7 @@ export default class ProductDetails extends React.Component {
     const priceNum = ((this.state.product.price) / 100).toFixed(2);
     const price = `$${priceNum}`;
     const shortDesc = this.state.product.shortDescription;
+
     if (this.state.product !== null) {
       return (
         <div className="details-container">
