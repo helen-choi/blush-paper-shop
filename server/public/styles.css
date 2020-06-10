@@ -1,6 +1,7 @@
 *{
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  color: #343a40;
 }
 #root {
   background:#f4f4f4 url('./images/02-heavy-paper.png') repeat;
@@ -29,6 +30,9 @@
 }
 .header-container p:hover {
   cursor: pointer;
+}
+.header-container a {
+  text-decoration: none;
 }
 .cart-icon i {
   font-size:20px;
@@ -65,7 +69,7 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 }
 /* Product Details */
 .btn-back {
-  font-size: 12px;
+  font-size: 13px;
 }
 .btn-back span {
   cursor: pointer;
@@ -160,4 +164,26 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 }
 .disclaminer span {
   font-weight: 700;
+}
+/* Product Details */
+.download-instructions ul {
+  list-style-type: none;
+  padding: 0;
+}
+.download-instructions ul li {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.download-instructions ul li a {
+  color: #343a40;
+  text-decoration: none;
+}
+.download-instructions ul li a:hover {
+  color: #F9CEC0;
+}
+.download-instructions h6 {
+  border-top: 1px dashed #343a40;
+  border-bottom: 1px dashed #343a40;
+  padding: 5px 10px;
+  font-size: 14px;
 }
