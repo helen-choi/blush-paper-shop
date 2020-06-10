@@ -31,6 +31,9 @@
 .header-container p:hover {
   cursor: pointer;
 }
+.header-container a {
+  text-decoration: none;
+}
 .cart-icon i {
   font-size:20px;
   padding-right: 30px;
