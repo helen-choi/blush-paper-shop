@@ -28,7 +28,7 @@ Try the application live at https://blushpaper.helen-choi.com/
 - User can place an order
 
 ## Preview
-![Wicked Sales app demo](https://github.com/helen-choi/blush-paper-shop/blob/master/server/public/images/wicked-sales.gif "Wicked Sales app demo")
+![Blushpaper app demo](https://github.com/helen-choi/blush-paper-shop/blob/master/server/public/images/blushpaper.gif "Blushpaper app demo")
  
 ## Development
 
