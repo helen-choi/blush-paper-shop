@@ -29,7 +29,7 @@ export default class ProductList extends React.Component {
             <img className="w-100" src="./images/banner.jpg" alt="It's Your Special Day." />
           </div>
         </div>
-        <div className="filer d-flex justify-content-center mt-5">
+        <div className="filter d-flex justify-content-center mt-5">
           <div className="filter-invitation"><i className="fas fa-envelope-open-text fa-2x"></i></div>
           <div className="filter-menu"><i className="fas fa-utensils fa-2x"></i></div>
           <div className="filter-program"><i className="fas fa-bars fa-2x"></i></div>
