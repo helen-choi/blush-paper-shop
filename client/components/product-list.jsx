@@ -31,6 +31,9 @@ export default class ProductList extends React.Component {
         </div>
         <div className="filer d-flex justify-content-center mt-5">
           <div className="filter-invitation"><i className="fas fa-envelope-open-text fa-2x"></i></div>
+          <div className="filter-menu"><i className="fas fa-utensils fa-2x"></i></div>
+          <div className="filter-program"><i className="fas fa-bars fa-2x"></i></div>
+          <div className="filter-numbers"><i className="far fa-file-excel fa-2x"></i></div>
         </div>
         <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap justify-content-between">
           {
