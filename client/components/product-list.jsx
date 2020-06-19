@@ -7,7 +7,7 @@ export default class ProductList extends React.Component {
     this.state = {
       products: [],
       filterOn: false,
-      setFilterClass: ''
+      setFilterClass: 'column col-md-4 mb-3'
     };
     this.filter = this.filter.bind(this);
   }
@@ -56,6 +56,7 @@ export default class ProductList extends React.Component {
                   key={product.productId}
                   product={product}
                   onClick={this.props.onClick}
+                  classNames={this.state.setFilterClass}
                 />
               );
             })
