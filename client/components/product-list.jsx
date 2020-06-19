@@ -6,7 +6,8 @@ export default class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      filterOn: false
+      filterOn: false,
+      setFilterClass: ''
     };
     this.filter = this.filter.bind(this);
   }
@@ -25,6 +26,9 @@ export default class ProductList extends React.Component {
 
   filter() {
   /* eslint-disable no-console */
+    this.setState({
+      filterOn: true
+    });
     const target = event.target.parentElement;
     const filterClass = target.className.slice(7);
     console.log(filterClass);
