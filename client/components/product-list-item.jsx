@@ -18,7 +18,7 @@ export default class ProductListItem extends React.Component {
     const priceNum = (this.props.product.price / 100).toFixed(2);
     const price = `$${priceNum}`;
     return (
-      <div onClick={this.handleClick} className="column col-md-4 mb-3">
+      <div onClick={this.handleClick} className={this.props.classNames}>
         <div className="product">
           <img src={image} className="product-img card-img-top" alt="" />
           <div className="product-info p-2">

@@ -5,8 +5,11 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      filterOn: false,
+      setFilterClass: 'column col-md-4 mb-3'
     };
+    this.filter = this.filter.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +24,16 @@ export default class ProductList extends React.Component {
       });
   }
 
+  filter() {
+  /* eslint-disable no-console */
+    this.setState({
+      filterOn: true
+    });
+    const target = event.target.parentElement;
+    const filterClass = target.className.slice(7);
+    console.log(filterClass);
+  }
+
   render() {
     return (
       <>
@@ -30,10 +43,10 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-5">
-          <div className="filter-invitation"><i className="fas fa-envelope-open-text fa-2x"></i></div>
-          <div className="filter-menu"><i className="fas fa-utensils fa-2x"></i></div>
-          <div className="filter-program"><i className="fas fa-bars fa-2x"></i></div>
-          <div className="filter-numbers"><i className="far fa-file-excel fa-2x"></i></div>
+          <div className="filter-invitation"><i onClick={this.filter} className="fas fa-envelope-open-text fa-2x"></i></div>
+          <div className="filter-menu"><i onClick={this.filter} className="fas fa-utensils fa-2x"></i></div>
+          <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
+          <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
         </div>
         <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap justify-content-between">
           {
@@ -43,6 +56,7 @@ export default class ProductList extends React.Component {
                   key={product.productId}
                   product={product}
                   onClick={this.props.onClick}
+                  classNames={this.state.setFilterClass}
                 />
               );
             })
