@@ -6,8 +6,7 @@ export default class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      filterOn: false,
-      setFilterClass: 'column col-md-4 mb-3'
+      filterOn: false
     };
     this.filter = this.filter.bind(this);
   }
@@ -31,11 +30,14 @@ export default class ProductList extends React.Component {
     });
     const target = event.target.parentElement;
     const filterClass = target.className.slice(7);
-    const card = document.querySelector('.column');
+    const card = document.querySelectorAll('.column');
 
     for (let i = 0; i < this.state.products.length; i++) {
-      if (this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1) {
-        console.log(card.dataset.tag);
+      card[i].classList.add('d-none');
+      if (
+        this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1
+      ) {
+        console.log(card[i].classList.remove('d-none'));
       }
     }
   }
@@ -54,7 +56,7 @@ export default class ProductList extends React.Component {
           <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
           <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
         </div>
-        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap justify-content-between">
+        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap">
           {
             this.state.products.map(product => {
               return (
@@ -62,7 +64,6 @@ export default class ProductList extends React.Component {
                   key={product.productId}
                   product={product}
                   onClick={this.props.onClick}
-                  classNames={this.state.setFilterClass}
                 />
               );
             })
