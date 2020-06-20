@@ -31,11 +31,11 @@ export default class ProductList extends React.Component {
     });
     const target = event.target.parentElement;
     const filterClass = target.className.slice(7);
-    // console.log(filterClass);
+    const card = document.querySelector('.column');
 
     for (let i = 0; i < this.state.products.length; i++) {
       if (this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1) {
-        console.log(this.state.products[i].name);
+        console.log(card.dataset.tag);
       }
     }
   }
