@@ -34,6 +34,12 @@ export default class ProductList extends React.Component {
 
     for (let i = 0; i < this.state.products.length; i++) {
       card[i].classList.add('d-none');
+      if (filterClass === 'all') {
+        this.setState({
+          filterOn: false
+        });
+        card[i].classList.remove('d-none');
+      }
       if (
         this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1
       ) {
@@ -51,6 +57,7 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-5">
+          <div className="filter-all"><h3 onClick={this.filter}>ALL</h3></div>
           <div className="filter-invitation"><i onClick={this.filter} className="fas fa-envelope-open-text fa-2x"></i></div>
           <div className="filter-menu"><i onClick={this.filter} className="fas fa-utensils fa-2x"></i></div>
           <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
