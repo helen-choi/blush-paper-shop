@@ -28,7 +28,7 @@ export default class ProductList extends React.Component {
     this.setState({
       filterOn: true
     });
-    const target = event.target.parentElement;
+    const target = event.target.parentElement.parentElement;
     const filterClass = target.className.slice(7);
     const card = document.querySelectorAll('.column');
 
@@ -55,11 +55,11 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-4">
-          <div className="filter-all mr-2"><h3 onClick={this.filter}>ALL</h3></div>
-          <div className="filter-invitation mr-2"><figure><img src="./images/icons/invitation.png" onClick={this.filter} alt="Invitation" /><figcaption>Invitation</figcaption></figure></div>
-          <div className="filter-menu mr-2"><figure><img src="./images/icons/menu.png" onClick={this.filter} alt="Menu" /><figcaption>Menu</figcaption></figure></div>
-          <div className="filter-program mr-2"><img src="./images/icons/program.png" onClick={this.filter} alt="Program"/></div>
-          <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
+          <div className="filter-all" onClick={this.filter}><h3>ALL</h3></div>
+          <div className="filter-invitation" onClick={this.filter}><figure><img src="./images/icons/invitation.png" alt="Invitation" /><figcaption>Invitation</figcaption></figure></div>
+          <div className="filter-menu" onClick={this.filter}><figure><img src="./images/icons/menu.png" alt="Menu" /><figcaption>Menu</figcaption></figure></div>
+          <div className="filter-program" onClick={this.filter}><figure><img src="./images/icons/program.png" alt="Program" /><figcaption>Program</figcaption></figure></div>
+          <div className="filter-numbers" onClick={this.filter}><figure><img src="./images/icons/numbers.png" alt="Numbers" /><figcaption>Table Numbers</figcaption></figure></div>
         </div>
         <div className="container ml-auto mr-auto mt-4 products-container row flex-wrap">
           {
