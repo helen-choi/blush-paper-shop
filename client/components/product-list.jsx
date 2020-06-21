@@ -54,14 +54,14 @@ export default class ProductList extends React.Component {
             <img className="w-100" src="./images/banner.jpg" alt="It's Your Special Day." />
           </div>
         </div>
-        <div className="filter d-flex justify-content-center mt-4">
+        <div className="filter d-flex justify-content-center mt-5">
           <div className="filter-all" onClick={this.filter}><figure><img src="./images/icons/all.png" alt="All" /><figcaption>All</figcaption></figure></div>
           <div className="filter-invitation" onClick={this.filter}><figure><img src="./images/icons/invitation.png" alt="Invitation" /><figcaption>Invitation</figcaption></figure></div>
           <div className="filter-menu" onClick={this.filter}><figure><img src="./images/icons/menu.png" alt="Menu" /><figcaption>Menu</figcaption></figure></div>
           <div className="filter-program" onClick={this.filter}><figure><img src="./images/icons/program.png" alt="Program" /><figcaption>Program</figcaption></figure></div>
           <div className="filter-numbers" onClick={this.filter}><figure><img src="./images/icons/numbers.png" alt="Numbers" /><figcaption>Table Numbers</figcaption></figure></div>
         </div>
-        <div className="container ml-auto mr-auto mt-4 products-container row flex-wrap">
+        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap">
           {
             this.state.products.map(product => {
               return (
