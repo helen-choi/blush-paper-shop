@@ -17,8 +17,21 @@ export default class ProductListItem extends React.Component {
     const name = this.props.product.name;
     const priceNum = (this.props.product.price / 100).toFixed(2);
     const price = `$${priceNum}`;
+    let tag;
+    if (this.props.product.name.toLowerCase().includes('menu')) {
+      tag = 'menu';
+    }
+    if (this.props.product.name.toLowerCase().includes('invitation')) {
+      tag = 'invitation';
+    }
+    if (this.props.product.name.toLowerCase().includes('numbers')) {
+      tag = 'numbers';
+    }
+    if (this.props.product.name.toLowerCase().includes('program')) {
+      tag = 'program';
+    }
     return (
-      <div onClick={this.handleClick} className={this.props.classNames}>
+      <div onClick={this.handleClick} className='column col-md-4 mb-3' data-tag={tag}>
         <div className="product">
           <img src={image} className="product-img card-img-top" alt="" />
           <div className="product-info p-2">

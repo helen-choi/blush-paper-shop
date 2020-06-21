@@ -6,8 +6,7 @@ export default class ProductList extends React.Component {
     super(props);
     this.state = {
       products: [],
-      filterOn: false,
-      setFilterClass: 'column col-md-4 mb-3'
+      filterOn: false
     };
     this.filter = this.filter.bind(this);
   }
@@ -31,7 +30,20 @@ export default class ProductList extends React.Component {
     });
     const target = event.target.parentElement;
     const filterClass = target.className.slice(7);
-    console.log(filterClass);
+    const card = document.querySelectorAll('.column');
+
+    for (let i = 0; i < this.state.products.length; i++) {
+      card[i].classList.add('d-none');
+      if (filterClass === 'all') {
+        this.setState({
+          filterOn: false
+        });
+        card[i].classList.remove('d-none');
+      }
+      if (this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1) {
+        card[i].classList.remove('d-none');
+      }
+    }
   }
 
   render() {
@@ -43,12 +55,13 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-5">
+          <div className="filter-all"><h3 onClick={this.filter}>ALL</h3></div>
           <div className="filter-invitation"><i onClick={this.filter} className="fas fa-envelope-open-text fa-2x"></i></div>
           <div className="filter-menu"><i onClick={this.filter} className="fas fa-utensils fa-2x"></i></div>
           <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
           <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
         </div>
-        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap justify-content-between">
+        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap">
           {
             this.state.products.map(product => {
               return (
@@ -56,7 +69,6 @@ export default class ProductList extends React.Component {
                   key={product.productId}
                   product={product}
                   onClick={this.props.onClick}
-                  classNames={this.state.setFilterClass}
                 />
               );
             })
