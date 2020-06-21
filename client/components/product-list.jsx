@@ -40,10 +40,8 @@ export default class ProductList extends React.Component {
         });
         card[i].classList.remove('d-none');
       }
-      if (
-        this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1
-      ) {
-        console.log(card[i].classList.remove('d-none'));
+      if (this.state.products[i].name.toLowerCase().indexOf(filterClass) > -1) {
+        card[i].classList.remove('d-none');
       }
     }
   }
