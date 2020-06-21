@@ -55,7 +55,7 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-4">
-          <div className="filter-all" onClick={this.filter}><h3>ALL</h3></div>
+          <div className="filter-all" onClick={this.filter}><figure><img src="./images/icons/all.png" alt="All" /><figcaption>All</figcaption></figure></div>
           <div className="filter-invitation" onClick={this.filter}><figure><img src="./images/icons/invitation.png" alt="Invitation" /><figcaption>Invitation</figcaption></figure></div>
           <div className="filter-menu" onClick={this.filter}><figure><img src="./images/icons/menu.png" alt="Menu" /><figcaption>Menu</figcaption></figure></div>
           <div className="filter-program" onClick={this.filter}><figure><img src="./images/icons/program.png" alt="Program" /><figcaption>Program</figcaption></figure></div>
