@@ -54,14 +54,14 @@ export default class ProductList extends React.Component {
             <img className="w-100" src="./images/banner.jpg" alt="It's Your Special Day." />
           </div>
         </div>
-        <div className="filter d-flex justify-content-center mt-5">
-          <div className="filter-all"><h3 onClick={this.filter}>ALL</h3></div>
-          <div className="filter-invitation"><i onClick={this.filter} className="fas fa-envelope-open-text fa-2x"></i></div>
-          <div className="filter-menu"><i onClick={this.filter} className="fas fa-utensils fa-2x"></i></div>
-          <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
+        <div className="filter d-flex justify-content-center mt-4">
+          <div className="filter-all mr-2"><h3 onClick={this.filter}>ALL</h3></div>
+          <div className="filter-invitation mr-2"><figure><img src="./images/icons/invitation.png" onClick={this.filter} alt="Invitation" /><figcaption>Invitation</figcaption></figure></div>
+          <div className="filter-menu mr-2"><figure><img src="./images/icons/menu.png" onClick={this.filter} alt="Menu" /><figcaption>Menu</figcaption></figure></div>
+          <div className="filter-program mr-2"><img src="./images/icons/program.png" onClick={this.filter} alt="Program"/></div>
           <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
         </div>
-        <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap">
+        <div className="container ml-auto mr-auto mt-4 products-container row flex-wrap">
           {
             this.state.products.map(product => {
               return (
