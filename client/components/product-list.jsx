@@ -28,9 +28,15 @@ export default class ProductList extends React.Component {
     this.setState({
       filterOn: true
     });
-    const target = (event.target.tagName === 'FIGURE')
-      ? event.target.parentElement
-      : event.target.parentElement.parentElement;
+    let target;
+    if (event.target.tagName === 'DIV') {
+      target = event.target;
+    } else if (event.target.tagName === 'FIGURE') {
+      target = event.target.parentElement;
+    } else {
+      target = event.target.parentElement.parentElement;
+    }
+
     const filterClass = target.className.slice(7);
     const card = document.querySelectorAll('.column');
 
