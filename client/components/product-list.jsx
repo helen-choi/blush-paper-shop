@@ -23,12 +23,20 @@ export default class ProductList extends React.Component {
       });
   }
 
-  filter() {
-  /* eslint-disable no-console */
+  filter(e) {
+    /* eslint-disable no-console */
     this.setState({
       filterOn: true
     });
-    const target = event.target.parentElement;
+    let target;
+    if (event.target.tagName === 'DIV') {
+      target = event.target;
+    } else if (event.target.tagName === 'FIGURE') {
+      target = event.target.parentElement;
+    } else {
+      target = event.target.parentElement.parentElement;
+    }
+
     const filterClass = target.className.slice(7);
     const card = document.querySelectorAll('.column');
 
@@ -44,6 +52,7 @@ export default class ProductList extends React.Component {
         card[i].classList.remove('d-none');
       }
     }
+    e.stopPropagation();
   }
 
   render() {
@@ -55,11 +64,11 @@ export default class ProductList extends React.Component {
           </div>
         </div>
         <div className="filter d-flex justify-content-center mt-5">
-          <div className="filter-all"><h3 onClick={this.filter}>ALL</h3></div>
-          <div className="filter-invitation"><i onClick={this.filter} className="fas fa-envelope-open-text fa-2x"></i></div>
-          <div className="filter-menu"><i onClick={this.filter} className="fas fa-utensils fa-2x"></i></div>
-          <div className="filter-program"><i onClick={this.filter} className="fas fa-bars fa-2x"></i></div>
-          <div className="filter-numbers"><i onClick={this.filter} className="far fa-file-excel fa-2x"></i></div>
+          <div className="filter-all" onClick={this.filter}><figure><img src="./images/icons/all.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-all.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/all.png')} alt="All" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-all.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/all.png')}>All</figcaption></figure></div>
+          <div className="filter-invitation" onClick={this.filter}><figure><img src="./images/icons/invitation.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-invitation.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/invitation.png')} alt="Invitation" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-invitation.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/invitation.png')}>Invitation</figcaption></figure></div>
+          <div className="filter-menu" onClick={this.filter}><figure><img src="./images/icons/menu.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-menu.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/menu.png')} alt="Menu" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-menu.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/menu.png')}>Menu</figcaption></figure></div>
+          <div className="filter-program" onClick={this.filter}><figure><img src="./images/icons/program.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-program.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/program.png')} alt="Program" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-program.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/program.png')}>Program</figcaption></figure></div>
+          <div className="filter-numbers" onClick={this.filter}><figure><img src="./images/icons/numbers.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-numbers.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/numbers.png')} alt="Numbers" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-numbers.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/numbers.png')} >Table Numbers</figcaption></figure></div>
         </div>
         <div className="container ml-auto mr-auto mt-5 products-container row flex-wrap">
           {
