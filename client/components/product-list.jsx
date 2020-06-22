@@ -24,14 +24,14 @@ export default class ProductList extends React.Component {
   }
 
   filter() {
-  /* eslint-disable no-console */
+    /* eslint-disable no-console */
     this.setState({
       filterOn: true
     });
     const target = event.target.parentElement.parentElement;
     const filterClass = target.className.slice(7);
     const card = document.querySelectorAll('.column');
-    console.log(event.target);
+    console.log(target);
 
     for (let i = 0; i < this.state.products.length; i++) {
       card[i].classList.add('d-none');
