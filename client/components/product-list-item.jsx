@@ -31,7 +31,7 @@ export default class ProductListItem extends React.Component {
       tag = 'program';
     }
     return (
-      <div onClick={this.handleClick} className='column col-md-4 mb-3 animate__animated animate__fadeIn' data-tag={tag}>
+      <div onClick={this.handleClick} className='column col-md-4 mb-3 fade-in' data-tag={tag}>
         <div className="product">
           <img src={image} className="product-img card-img-top" alt="" />
           <div className="product-info p-2">
