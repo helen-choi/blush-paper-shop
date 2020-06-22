@@ -23,7 +23,7 @@ export default class ProductList extends React.Component {
       });
   }
 
-  filter() {
+  filter(e) {
     /* eslint-disable no-console */
     this.setState({
       filterOn: true
@@ -46,6 +46,7 @@ export default class ProductList extends React.Component {
         card[i].classList.remove('d-none');
       }
     }
+    e.stopPropagation();
   }
 
   render() {
