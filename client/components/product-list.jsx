@@ -28,10 +28,11 @@ export default class ProductList extends React.Component {
     this.setState({
       filterOn: true
     });
-    const target = event.target.parentElement.parentElement;
+    const target = (event.target.tagName === 'FIGURE')
+      ? event.target.parentElement
+      : event.target.parentElement.parentElement;
     const filterClass = target.className.slice(7);
     const card = document.querySelectorAll('.column');
-    console.log(target);
 
     for (let i = 0; i < this.state.products.length; i++) {
       card[i].classList.add('d-none');
