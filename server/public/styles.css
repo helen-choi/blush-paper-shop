@@ -205,6 +205,6 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
 .filter figcaption {
   font-size: 12px;
 }
-.filter figcaption:hover {
+.filter figure:hover figcaption {
   color:#F9CEC0;
 }
