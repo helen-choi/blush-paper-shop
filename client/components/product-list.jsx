@@ -58,7 +58,7 @@ export default class ProductList extends React.Component {
   render() {
     return (
       <>
-        <div className="banner">
+        <div className="banner w-100">
           <div className="row">
             <img className="w-100" src="./images/banner.jpg" alt="It's Your Special Day." />
           </div>
