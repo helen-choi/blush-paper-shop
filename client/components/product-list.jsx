@@ -58,12 +58,12 @@ export default class ProductList extends React.Component {
   render() {
     return (
       <>
-        <div className="banner w-100">
+        <div className="banner">
           <div className="row">
             <img className="w-100" src="./images/banner.jpg" alt="It's Your Special Day." />
           </div>
         </div>
-        <div className="filter d-flex justify-content-center mt-5">
+        <div className="filter justify-content-center mt-5">
           <div className="filter-all" onClick={this.filter}><figure><img src="./images/icons/all.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-all.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/all.png')} alt="All" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-all.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/all.png')}>All</figcaption></figure></div>
           <div className="filter-invitation" onClick={this.filter}><figure><img src="./images/icons/invitation.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-invitation.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/invitation.png')} alt="Invitation" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-invitation.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/invitation.png')}>Invitation</figcaption></figure></div>
           <div className="filter-menu" onClick={this.filter}><figure><img src="./images/icons/menu.png" onMouseOver={e => (e.currentTarget.src = './images/icons/hover-menu.png')} onMouseOut={e => (e.currentTarget.src = './images/icons/menu.png')} alt="Menu" /><figcaption onMouseOver={e => (e.currentTarget.previousSibling.src = './images/icons/hover-menu.png')} onMouseOut={e => (e.currentTarget.previousSibling.src = './images/icons/menu.png')}>Menu</figcaption></figure></div>
