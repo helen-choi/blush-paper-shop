@@ -191,6 +191,9 @@ box-shadow: 0px 0px 8px 0px #F9CEC0;
   font-size: 14px;
 }
 /* Filter */
+.filter {
+  display: flex;
+}
 .filter img {
   width: 50px;
 }
@@ -235,4 +238,11 @@ animation: fadeIn ease 1s;
 @-ms-keyframes fadeIn {
 0% {opacity:0;}
 100% {opacity:1;}
+}
+
+/* Media Query */
+@media only screen and (max-width:480px) {
+  .banner, .filter {
+    display: none;
+  }
 }
